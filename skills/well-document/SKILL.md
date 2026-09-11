@@ -8,7 +8,7 @@ version: 1.0.0
 
 A repository governance and documentation skill for AI coding assistants. Turns raw, undocumented codebases into production-grade, open-source repositories that look engineered, not generated.
 
-Like Hallmark for frontend design, `well-document` is opinionated, technical, and anti-AI-slop. It systematically replaces generic boilerplate, emoji vomit, and marketing puffery with crisp technical architecture, real verification steps, and industry-standard governance.
+`well-document` is opinionated, technical, and anti-AI-slop. It systematically replaces generic boilerplate, emoji vomit, and marketing puffery with crisp technical architecture, real verification steps, and industry-standard governance.
 
 ---
 
