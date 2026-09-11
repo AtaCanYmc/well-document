@@ -40,7 +40,12 @@ AI-generated documentation is instantly recognizable by common tells: rocket emo
 7. **High-Signal Technical FAQ (Conditional)**: If the repository warrants it (e.g. tools with distinct trade-offs, telemetry/privacy questions, offline execution guarantees, or common alternative comparisons like "Why X instead of Y?"), include a technical FAQ section. Strictly forbid trivial filler questions ("Is this free?"). Every FAQ item must solve real developer doubts or explain design decisions.
 8. **Legal License Compatibility**: Never assign an incompatible permissive license if dependencies impose copyleft obligations (GPL/AGPL). Never emit unpopulated placeholders (`<YEAR>`, `[fullname]`). Follow the triage matrix in [`references/licensing.md`](references/licensing.md).
 9. **CI, Maintenance & Release Automation (Conditional)**: If the repository contains runnable tests, linters, or build scripts, scaffold `.github/workflows/ci.yml`. If it contains dependencies or actions, scaffold `.github/dependabot.yml`. If it adheres to Conventional Commits and publishes releases, scaffold `.github/workflows/release-please.yml`. Always embed the CI status badge in `README.md`. See [`references/automation.md`](references/automation.md).
-10. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard (`references/slop-test.md`) before generating or saving any documentation file.
+10. **Table of Contents (Navigation)**: Every generated `README.md` must feature a clean, hyperlinked Table of Contents placed immediately after the Overview/Badges block to guarantee rapid developer navigation across sections.
+11. **Scoped Subfolder READMEs (Workspaces & Modules)**: When a repository contains discrete sub-packages, independent workspaces, or major domain modules (e.g. `packages/*`, `apps/*`, `crates/*`, `skills/*`), scaffold dedicated, focused `README.md` files within those subfolders. Each sub-README must strictly adhere to the same anti-AI-slop rules, document only that module's specific scope and API, and include a top navigation breadcrumb (`[← Back to Root Repository](../../README.md)`).
+12. **No Long Dashes & Minimal Parentheses**: Strictly avoid long dashes (`—` or `--`) to stitch fragmented thoughts together. Keep parenthetical explanations minimal or eliminated. Write direct, declarative sentences terminated with periods instead of whispering or hedging in parentheses. See [`references/anti-patterns.md`](references/anti-patterns.md).
+13. **Fast-Path Quick Start for Complex Setups**: When a repository contains multi-service topologies or container setups (e.g. `docker-compose.yml`, `Dockerfile`, `.devcontainer/`), the `README.md` must lead with a turnkey **Quick Start (Docker)** fast-path. Limit it to 3 or 4 actionable commands (`clone`, `cp .env.example .env`, `docker compose up -d`, `healthz check`). Never bury container commands beneath lengthy manual environment setup instructions.
+14. **Tabular Clarity for Structured Data**: When documenting environment variables (`.env`), CLI flags, configuration schemas, or runtime/feature compatibility matrices, always structure them in clean, compact Markdown tables with explicit column alignment. Never dump structured parameters as loose, unformatted bullet lists. See [`references/archetypes.md`](references/archetypes.md).
+15. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard (`references/slop-test.md`) before generating or saving any documentation file.
 
 ---
 
@@ -65,6 +70,8 @@ Before writing a single word, read the target repository:
 - **Language / Runtime**: Detect package manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `pom.xml`).
 - **Existing Governance**: Check for `LICENSE`, `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.gitignore`.
 - **Public API / Entry Point**: Identify the primary CLI command, importable library modules, or main entry points.
+- **Infrastructure & Containers**: Detect `Dockerfile`, `docker-compose.yml`, or `.devcontainer/` to check if a turnkey Docker Quick Start is warranted.
+- **Sub-Packages & Workspaces**: Identify modular subdirectories (`packages/`, `apps/`, `crates/`, `skills/`) requiring scoped documentation.
 - **Upstream Licensing Triage**: Scan linked dependencies for copyleft (GPL/AGPL) constraints, determine project distribution model, and extract author/organization identity. See [`references/licensing.md`](references/licensing.md).
 
 ### Step 1: Select Repository Archetype
@@ -76,7 +83,8 @@ Choose the structure matching the codebase's true nature (see [`references/arche
 
 ### Step 2: Assemble Governance & Automation Files
 Generate only missing or requested files:
-- **`README.md`**: Minimalist banner/badge header (with CI status badge), single-sentence technical definition, copy-paste quick start, architecture tree (with Mermaid where relevant), verifiable examples, and a conditional high-signal FAQ section when warranted.
+- **`README.md`**: Minimalist banner/badge header (with CI status badge), single-sentence technical definition, **hyperlinked Table of Contents**, **turnkey Quick Start (featuring Docker fast-path when container manifests exist)**, architecture tree (with Mermaid where relevant), verifiable examples, and a conditional high-signal FAQ section when warranted.
+- **Scoped Subfolder `README.md`** *(Conditional)*: Independent README files inside modular sub-packages (`packages/*`, `apps/*`, `crates/*`, `skills/*`) with localized Quick Start, API exports, and a `[← Back to Root Repository]` link.
 - **`.gitignore`**: Complete ignore rules for the detected runtime(s), IDEs, OS metadata, and secret files (`.env`).
 - **`SECURITY.md`**: Active version support table, encrypted or private disclosure workflow, 48-hour response SLA.
 - **`CONTRIBUTING.md`**: Conventional Commits specification, branch naming, local test commands, PR verification checklist.

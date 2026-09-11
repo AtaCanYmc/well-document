@@ -39,4 +39,10 @@ jobs:
             echo "$SLOP_MATCHES"
             exit 1
           fi
+
+          # Check for long dashes (em-dash) in README
+          if grep -q "—" README.md; then
+            echo "Error: Forbidden long dash (em-dash) detected in README.md."
+            exit 1
+          fi
           echo "Anti-AI-slop check passed."

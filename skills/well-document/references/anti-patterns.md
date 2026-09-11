@@ -82,3 +82,20 @@ Keep the README tight. A developer reading a GitHub repository needs:
 2. How do I install and run it? (Copy-paste code block)
 3. What is the API / CLI interface? (Real examples)
 4. Where are the architecture & contribution rules? (Links to docs)
+
+---
+
+## 7. Parenthetical Whispering & Long Dash Addiction
+
+### The Anti-Pattern
+Two telltale markers of AI-generated prose are endless parenthetical asides and chained long dashes (`—`):
+> *The daemon — which runs in user space — buffers events (up to 10,000 entries) before committing to disk — ensuring persistent throughput (even under failure conditions).*
+
+This creates hesitant, fragmented prose that reads like an LLM hedging its assertions.
+
+### The Fix
+1. **Ban Long Dashes (`—` / `--`)**: Eliminate em-dashes completely. Break compound thoughts into crisp, declarative sentences separated by periods.
+2. **Minimize Parentheses**: Avoid using parentheses for explanatory clauses. If information is essential to the developer, write it directly in the main sentence. If it is non-essential, delete it entirely.
+
+**Good Example**:
+> *The daemon runs in user space. It buffers up to 10,000 events in memory before committing to disk to preserve throughput during disk latency spikes.*

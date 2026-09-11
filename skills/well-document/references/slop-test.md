@@ -8,9 +8,9 @@ Before committing or presenting generated documentation, audit the content again
 
 | Gate | Category | Description | Pass Criteria (Score 4-5) | Fail Criteria (Score 1-2) |
 | --- | --- | --- | --- | --- |
-| **G1** | **Restraint** | Emoji & styling discipline | Max 1 neutral emoji per top-level heading; zero inline emojis. | Emojis in body text, rocket/fire/sparkle icons, excessive exclamation marks. |
+| **G1** | **Restraint** | Styling & punctuation discipline | Max 1 neutral emoji per top-level heading; zero inline emojis; zero long dashes (`—`). Minimal parenthetical clauses. | Emojis in body text, rocket/fire icons, chained long dashes (`—`), parenthetical whispering/hedging. |
 | **G2** | **Verifiability** | Runnable instructions | All commands can be copied and run verbatim against the actual codebase. | Unresolvable packages, nonexistent script paths, undeclared env variables. |
-| **G3** | **Specificity** | Precision of language | Direct description of algorithms, protocols, inputs, and outputs. | Buzzword salad ("revolutionary", "seamless", "blazingly fast", "robust"). |
+| **G3** | **Specificity** | Precision of language | Direct description of algorithms, protocols, inputs, and outputs. Crisp, period-separated sentences. | Buzzword salad ("revolutionary", "seamless", "blazingly fast", "robust"), run-on thought chaining. |
 | **G4** | **Grounding** | Codebase fidelity | File trees, package names, and modules correspond strictly to real files on disk. | Imaginary directories, hallucinated dependencies, fictional microservices. |
 | **G5** | **Honesty** | Claims & social proof | Real benchmark methodology or no performance claims at all. | Made-up stats ("trusted by thousands", "+90% productivity boost"). |
 | **G6** | **Governance** | Policies, license & contribution | Private security disclosure address, SLA, Conventional Commits, legally compatible license with real year & owner (zero bracket placeholders). | Blank security sections, incompatible license (e.g. MIT on GPL deps), bracket placeholders like `[year]` or `[fullname]`, vague rules. |

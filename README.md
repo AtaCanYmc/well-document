@@ -24,6 +24,22 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 
 ---
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Technical Specifications](#technical-specifications)
+- [Installation](#installation)
+  - [Agent Compatibility Matrix](#agent-compatibility-matrix)
+  - [Quick Install (Automated)](#quick-install-automated)
+  - [Manual Agent Configuration](#manual-agent-configuration)
+- [Quick Start & Usage Scenarios](#quick-start--usage-scenarios)
+- [Repository Structure](#repository-structure)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [Documentation](#documentation)
+- [License](#license)
+
+---
+
 ## Technical Specifications
 
 - **Zero Buzzword Policy**: Strips meaningless adjectives (*"seamless"*, *"blazingly fast"*, *"revolutionary"*) in favor of concrete architectural contracts.
@@ -41,6 +57,17 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 ## Installation
 
 `well-document` can be installed globally across your system agent directories or linked directly into a specific project repository.
+
+### Agent Compatibility Matrix
+
+| AI Agent Environment | Global Skill Directory | Workspace-Level Path | Status |
+| :--- | :--- | :--- | :---: |
+| **Google Antigravity / Gemini CLI** | `~/.gemini/antigravity/skills/` | `.gemini/skills/` | Verified |
+| **Claude Code** | `~/.claude/skills/` | `.claude/skills/` | Verified |
+| **Cursor** | `~/.cursor/skills/` | `.cursor/skills/` | Verified |
+| **OpenAI Codex / Copilot CLI** | `~/.codex/skills/` | `.codex/skills/` | Verified |
+
+---
 
 ### Quick Install (Automated)
 
@@ -152,6 +179,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │       └── release-please.yml       # Automated CHANGELOG & semantic versioning releases
 ├── skills/
 │   └── well-document/
+│       ├── README.md                # Scoped subfolder documentation for the skill distribution
 │       ├── SKILL.md                 # Primary AI agent skill definition & instructions
 │       └── references/              # Knowledge bases loaded by the agent
 │           ├── anti-patterns.md     # Catalog of AI-slop documentation tells & fixes
