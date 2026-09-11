@@ -1,0 +1,26 @@
+{
+  "name": "well-document",
+  "version": "1.0.0",
+  "description": "Anti-AI-slop repository governance and documentation skill for AI coding assistants.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/well-document.git"
+  },
+  "keywords": [
+    "agent-skill",
+    "skills",
+    "skills-sh",
+    "cursor",
+    "claude-code",
+    "antigravity",
+    "codex",
+    "documentation",
+    "governance"
+  ],
+  "author": "well-document Contributors",
+  "license": "MIT",
+  "files": [
+    "skills",
+    "install.sh"
+  ]
+}

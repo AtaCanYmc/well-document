@@ -30,8 +30,9 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 - [Technical Specifications](#technical-specifications)
 - [Installation](#installation)
   - [Agent Compatibility Matrix](#agent-compatibility-matrix)
-  - [Quick Install (Automated)](#quick-install-automated)
-  - [Manual Agent Configuration](#manual-agent-configuration)
+  - [Option 1: Skills CLI (Recommended)](#option-1-skills-cli-npx-skills-add-recommended)
+  - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer)
+  - [Option 3: Manual Configuration](#option-3-manual-agent-configuration)
 - [Quick Start & Usage Scenarios](#quick-start--usage-scenarios)
 - [Repository Structure](#repository-structure)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -69,9 +70,26 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 
 ---
 
-### Quick Install (Automated)
+### Option 1: Skills CLI (`npx skills add` - Recommended)
 
-Run the POSIX installer to auto-detect installed agent environments (Antigravity, Claude Code, Cursor, Codex):
+The standard, package-managed way to install AI agent skills across Cursor, Claude Code, Antigravity, and Codex:
+
+```bash
+# Add to current workspace/project repository
+npx skills add <owner>/well-document
+
+# Install globally across all detected AI agents on your machine
+npx skills add <owner>/well-document -g
+
+# Install non-interactively to specific agents
+npx skills add <owner>/well-document --agent cursor claude-code antigravity -y
+```
+
+---
+
+### Option 2: One-Line POSIX Installer
+
+Direct shell installer with zero dependencies:
 
 ```bash
 # Auto-detect all installed agent environments
@@ -87,7 +105,7 @@ curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.
 
 ---
 
-### Manual Agent Configuration
+### Option 3: Manual Agent Configuration
 
 #### 1. Google Antigravity & Gemini CLI
 Add `well-document` to your global or project-level Gemini/Antigravity skills path:
@@ -210,6 +228,9 @@ Traditional boilerplate generators copy static, rigid string templates and often
 
 #### Can our engineering team customize or enforce custom anti-slop rules?
 Yes. You can fork or link this skill and edit `skills/well-document/references/anti-patterns.md` to add team-specific banned jargon, custom CI badges, or internal security reporting endpoints.
+
+#### Can I install this with `npx skills add`?
+Yes. `well-document` follows the standard Agent Skills specification. Once published to GitHub, any developer can install it via `npx skills add <owner>/well-document` or globally via `npx skills add <owner>/well-document -g`.
 
 ---
 
