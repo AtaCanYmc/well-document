@@ -4,7 +4,7 @@
   "description": "Anti-AI-slop repository governance and documentation skill for AI coding assistants.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/example/well-document.git"
+    "url": "https://github.com/AtaCanYmc/well-document.git"
   },
   "keywords": [
     "agent-skill",

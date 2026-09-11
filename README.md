@@ -7,7 +7,7 @@
 **Anti-AI-slop repository governance and documentation skill for AI coding assistants.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/example/well-document/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
+[![CI](https://github.com/AtaCanYmc/well-document/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 [![Skill: AI Agent](https://img.shields.io/badge/Skill-AI%20Agent-purple.svg)](skills/well-document/SKILL.md)
 [![Status: Production](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)](#roadmap)
 [![Governance: Strict](https://img.shields.io/badge/Governance-Conventional%20Commits-orange.svg)](CONTRIBUTING.md)
@@ -76,13 +76,13 @@ The standard, package-managed way to install AI agent skills across Cursor, Clau
 
 ```bash
 # Add to current workspace/project repository
-npx skills add <owner>/well-document
+npx skills add AtaCanYmc/well-document
 
 # Install globally across all detected AI agents on your machine
-npx skills add <owner>/well-document -g
+npx skills add AtaCanYmc/well-document -g
 
 # Install non-interactively to specific agents
-npx skills add <owner>/well-document --agent cursor claude-code antigravity -y
+npx skills add AtaCanYmc/well-document --agent cursor claude-code antigravity -y
 ```
 
 ---
@@ -93,14 +93,14 @@ Direct shell installer with zero dependencies:
 
 ```bash
 # Auto-detect all installed agent environments
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh
 
 # Or install for a specific agent target:
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh -s -- --antigravity
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh -s -- --claude
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh -s -- --cursor
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh -s -- --codex
-curl -fsSL https://raw.githubusercontent.com/example/well-document/main/install.sh | sh -s -- --all
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh -s -- --antigravity
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh -s -- --claude
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh -s -- --cursor
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh -s -- --codex
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh -s -- --all
 ```
 
 ---
@@ -112,7 +112,7 @@ Add `well-document` to your global or project-level Gemini/Antigravity skills pa
 ```bash
 # Global Antigravity skills directory
 mkdir -p ~/.gemini/antigravity/skills/well-document
-git clone https://github.com/example/well-document.git ~/.gemini/antigravity/skills/well-document
+git clone https://github.com/AtaCanYmc/well-document.git ~/.gemini/antigravity/skills/well-document
 
 # Or as a workspace-specific skill in your active repository:
 mkdir -p .gemini/skills/well-document
@@ -124,7 +124,7 @@ Install into Claude Code's recognized skill inventory:
 ```bash
 # Global skills directory
 mkdir -p ~/.claude/skills/well-document
-git clone https://github.com/example/well-document.git ~/.claude/skills/well-document
+git clone https://github.com/AtaCanYmc/well-document.git ~/.claude/skills/well-document
 
 # Or repository-scoped rules
 mkdir -p .claude/skills/well-document
@@ -136,7 +136,7 @@ Configure as a Cursor skill or rule directory:
 ```bash
 # Global Cursor skill definition
 mkdir -p ~/.cursor/skills/well-document
-git clone https://github.com/example/well-document.git ~/.cursor/skills/well-document
+git clone https://github.com/AtaCanYmc/well-document.git ~/.cursor/skills/well-document
 
 # Project-level Cursor rules (.cursorrules / .cursor/rules)
 mkdir -p .cursor/skills/well-document
@@ -148,7 +148,7 @@ Mount into your Codex / Copilot CLI instruction directory:
 ```bash
 # Global Codex instruction path
 mkdir -p ~/.codex/skills/well-document
-git clone https://github.com/example/well-document.git ~/.codex/skills/well-document
+git clone https://github.com/AtaCanYmc/well-document.git ~/.codex/skills/well-document
 
 # Or specify as a prompt instruction file:
 export CODEX_INSTRUCTION_PATH="$HOME/.codex/skills/well-document/SKILL.md"
@@ -230,7 +230,7 @@ Traditional boilerplate generators copy static, rigid string templates and often
 Yes. You can fork or link this skill and edit `skills/well-document/references/anti-patterns.md` to add team-specific banned jargon, custom CI badges, or internal security reporting endpoints.
 
 #### Can I install this with `npx skills add`?
-Yes. `well-document` follows the standard Agent Skills specification. Once published to GitHub, any developer can install it via `npx skills add <owner>/well-document` or globally via `npx skills add <owner>/well-document -g`.
+Yes. `well-document` follows the standard Agent Skills specification. Once published to GitHub, any developer can install it via `npx skills add AtaCanYmc/well-document` or globally via `npx skills add AtaCanYmc/well-document -g`.
 
 ---
 
