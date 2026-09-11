@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Shell Script Syntax
+        run: |
+          for f in $(find . -name "*.sh" -not -path "*/.*"); do
+            echo "Checking syntax: $f"
+            sh -n "$f"
+          done
+
+      - name: Verify Governance Files
+        run: |
+          for f in README.md LICENSE CONTRIBUTING.md SECURITY.md ROADMAP.md; do
+            if [ ! -f "$f" ]; then
+              echo "Error: Missing governance file: $f"
+              exit 1
+            fi
+          done
+
+      - name: Anti-AI-Slop Linter
+        run: |
+          FORBIDDEN="seamlessly|blazingly fast|cutting-edge|revolutionary|comprehensive and robust|effortlessly"
+          # Check body text while excluding the explicit definition list of banned buzzwords
+          SLOP_MATCHES=$(grep -E -i "$FORBIDDEN" README.md | grep -v -E "Strips meaningless|Zero Buzzword" || true)
+          if [ -n "$SLOP_MATCHES" ]; then
+            echo "Error: Forbidden marketing buzzwords found in documentation:"
+            echo "$SLOP_MATCHES"
+            exit 1
+          fi
+          echo "Anti-AI-slop check passed."
