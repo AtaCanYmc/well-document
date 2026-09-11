@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/AtaCanYmc/well-document/compare/v1.0.0...v1.1.0) (2026-09-11)
+
+
+### Features
+
+* **docs:** add package.json and enhance README with installation options for well-document skill ([5525926](https://github.com/AtaCanYmc/well-document/commit/55259267128121f296efa756ac8a8dac88789a1f))
+
+
+### Bug Fixes
+
+* **docs:** update repository URLs in package.json and README for correct ownership ([043fbff](https://github.com/AtaCanYmc/well-document/commit/043fbff34f4e23a40b4fa457dcd656883dd5a85c))
+
 ## 1.0.0 (2026-09-11)
 
 
