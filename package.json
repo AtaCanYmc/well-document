@@ -21,6 +21,7 @@
   "license": "MIT",
   "files": [
     "skills",
-    "install.sh"
+    "install.sh",
+    "install.ps1"
   ]
 }

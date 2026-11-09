@@ -31,8 +31,9 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 - [Installation](#installation)
   - [Agent Compatibility Matrix](#agent-compatibility-matrix)
   - [Option 1: Skills CLI (Recommended)](#option-1-skills-cli-npx-skills-add-recommended)
-  - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer)
-  - [Option 3: Manual Configuration](#option-3-manual-agent-configuration)
+  - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer-macos--linux)
+  - [Option 3: PowerShell Installer (Windows)](#option-3-powershell-installer-windows-powershell--cmd)
+  - [Option 4: Manual Configuration](#option-4-manual-agent-configuration)
 - [Quick Start & Usage Scenarios](#quick-start--usage-scenarios)
 - [Repository Structure](#repository-structure)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -87,7 +88,7 @@ npx skills add AtaCanYmc/well-document --agent cursor claude-code antigravity -y
 
 ---
 
-### Option 2: One-Line POSIX Installer
+### Option 2: One-Line POSIX Installer (macOS & Linux)
 
 Direct shell installer with zero dependencies:
 
@@ -105,7 +106,31 @@ curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/instal
 
 ---
 
-### Option 3: Manual Agent Configuration
+### Option 3: PowerShell Installer (Windows PowerShell & CMD)
+
+Direct installer for Windows environments with zero dependencies:
+
+```powershell
+# In PowerShell (Auto-detect all installed agent environments):
+irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1 | iex
+
+# Or in Windows CMD:
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1 | iex"
+
+# Or install for a specific agent target (PowerShell):
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1))) -Antigravity
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1))) -Claude
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1))) -Cursor
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1))) -Codex
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1))) -All
+
+# Or run locally from cloned repository:
+.\install.ps1
+```
+
+---
+
+### Option 4: Manual Agent Configuration
 
 #### 1. Google Antigravity & Gemini CLI
 Add `well-document` to your global or project-level Gemini/Antigravity skills path:
@@ -206,6 +231,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │           ├── diagrams.md          # Technical Mermaid diagram standards & anti-slop rules
 │           ├── licensing.md         # Open-source legal triage & dependency compatibility matrix
 │           └── slop-test.md         # 6-point pre-emit audit scorecard
+├── install.ps1                      # Windows PowerShell / CMD installer
 ├── install.sh                       # Portable POSIX shell installer
 ├── docs/
 │   ├── recipes.md                   # Advanced recipes (CI actions, pre-commit, monorepos)
