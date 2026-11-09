@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/AtaCanYmc/well-document/compare/v1.1.0...v1.2.0) (2026-11-09)
+
+
+### Features
+
+* **install:** add Windows PowerShell and CMD installer (install.ps1) ([efd3cac](https://github.com/AtaCanYmc/well-document/commit/efd3cacd687e4f45dc0381aeae57b680c576914e))
+
 ## [1.1.0](https://github.com/AtaCanYmc/well-document/compare/v1.0.0...v1.1.0) (2026-09-11)
 
 
