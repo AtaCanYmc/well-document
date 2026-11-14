@@ -34,6 +34,7 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
   - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer-macos--linux)
   - [Option 3: PowerShell Installer (Windows)](#option-3-powershell-installer-windows-powershell--cmd)
   - [Option 4: Manual Configuration](#option-4-manual-agent-configuration)
+  - [Updating](#updating)
 - [Quick Start & Usage Scenarios](#quick-start--usage-scenarios)
 - [Repository Structure](#repository-structure)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -177,6 +178,26 @@ git clone https://github.com/AtaCanYmc/well-document.git ~/.codex/skills/well-do
 
 # Or specify as a prompt instruction file:
 export CODEX_INSTRUCTION_PATH="$HOME/.codex/skills/well-document/SKILL.md"
+```
+
+---
+
+### Updating
+
+Rerun the installer or update command corresponding to your installation method:
+
+```bash
+# Skills CLI
+npx skills update
+
+# POSIX (macOS & Linux)
+curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.sh | sh
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/AtaCanYmc/well-document/main/install.ps1 | iex
+
+# Manual Git clone (Antigravity example)
+git -C ~/.gemini/antigravity/skills/well-document pull
 ```
 
 ---
