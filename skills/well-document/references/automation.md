@@ -350,3 +350,35 @@ Scaffold `.github/PULL_REQUEST_TEMPLATE/pull_request_template.md`:
 - [ ] No extraneous dependencies, temporary files, or AI slop introduced.
 - [ ] All tests and CI validations pass locally.
 ```
+
+---
+
+## 7. Markdown Linting (`.markdownlint.json`)
+
+To prevent formatting drift, heading skips, and whitespace defects in documentation without breaking tables or Mermaid blocks, scaffold `.markdownlint.json` in the repository root:
+
+```json
+{
+  "default": true,
+  "MD013": false,
+  "MD033": {
+    "allowed_elements": [
+      "img",
+      "details",
+      "summary",
+      "div",
+      "p"
+    ]
+  },
+  "MD024": {
+    "siblings_only": true
+  },
+  "MD041": false
+}
+```
+
+### Key Rule Rationale
+- `MD013` (Line length): Disabled to avoid breaking Markdown tables, long URLs, and Mermaid code fences.
+- `MD033` (Inline HTML): Relaxed specifically for images (banners/badges) and `<details>` collapsible recipe blocks.
+- `MD024` (Multiple headings with identical text): Permitted under different parent sections (e.g. duplicate `### Example` or `### Step` subheadings).
+- `MD041` (First line must be top-level heading): Disabled to allow top banners, navigation breadcrumbs, and badge bars above the main `# Heading`.

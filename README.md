@@ -243,6 +243,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │   └── workflows/
 │       ├── ci.yml                   # Continuous integration (syntax, governance, anti-slop)
 │       └── release-please.yml       # Automated CHANGELOG & semantic versioning releases
+├── .markdownlint.json               # Markdown lint rules (relaxed for tables, Mermaid & HTML)
 ├── skills/
 │   └── well-document/
 │       ├── README.md                # Scoped subfolder documentation for the skill distribution

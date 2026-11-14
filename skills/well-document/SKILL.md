@@ -91,6 +91,7 @@ Generate only missing or requested files:
 - **`CONTRIBUTING.md`**: Conventional Commits specification, branch naming, local test commands, PR verification checklist.
 - **`LICENSE`**: Legally compatible open-source license (MIT, Apache-2.0, MPL-2.0, AGPL-3.0) determined by dependency triage. Must include accurate current calendar year and extracted copyright owner with zero placeholder bracket residue.
 - **`ROADMAP.md`**: Real milestones categorized by version tags, avoiding speculative promises.
+- **`.markdownlint.json`**: Disciplined markdown lint configuration tuned for technical repositories (disables line-length limits on tables/diagrams, permits banner images and details elements, prevents heading hierarchy skips).
 - **`.github/ISSUE_TEMPLATE/`**: Structured issue forms (`bug_report.yml`, `feature_request.yml`) and `config.yaml` with `blank_issues_enabled: false` and security redirects.
 - **`.github/PULL_REQUEST_TEMPLATE/`**: Standard pull request template (`pull_request_template.md`) enforcing Conventional Commits, itemized changes, and explicit verification steps.
 - **`.github/workflows/ci.yml`** *(Conditional)*: Automated testing and validation pipeline tailored to detected runtimes (Python, Node.js, Rust, Go, or Shell/Markdown).
