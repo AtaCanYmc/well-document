@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.0](https://github.com/AtaCanYmc/well-document/compare/v1.2.0...v1.3.0) (2026-11-14)
+
+
+### Features
+
+* **git:** add .gitattributes configuration and skill scaffolding ([701b3f7](https://github.com/AtaCanYmc/well-document/commit/701b3f7b09031f4d995b37deb91002af8419f92d))
+* **governance:** add .editorconfig, CODEOWNERS, and CI markdown link validation ([0ddafa3](https://github.com/AtaCanYmc/well-document/commit/0ddafa3e06582892dc2cffeb028ce93287fd1316))
+* **governance:** add GitHub issue forms and pull request templates ([9873ad3](https://github.com/AtaCanYmc/well-document/commit/9873ad3d2cb57e90f63849e30536886284789ae0))
+* **linter:** add markdownlint configuration and skill rule ([0fc7df3](https://github.com/AtaCanYmc/well-document/commit/0fc7df3abbe7106f6d7ba2546b0eb17e5627f547))
+
 ## [1.2.0](https://github.com/AtaCanYmc/well-document/compare/v1.1.0...v1.2.0) (2026-11-09)
 
 
