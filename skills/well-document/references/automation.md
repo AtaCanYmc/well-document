@@ -382,3 +382,52 @@ To prevent formatting drift, heading skips, and whitespace defects in documentat
 - `MD033` (Inline HTML): Relaxed specifically for images (banners/badges) and `<details>` collapsible recipe blocks.
 - `MD024` (Multiple headings with identical text): Permitted under different parent sections (e.g. duplicate `### Example` or `### Step` subheadings).
 - `MD041` (First line must be top-level heading): Disabled to allow top banners, navigation breadcrumbs, and badge bars above the main `# Heading`.
+
+---
+
+## 8. Cross-Platform Git Normalization (`.gitattributes`)
+
+Repositories supporting multi-platform development require deterministic line endings to prevent shell script execution failures on Unix/Docker and preserve binary assets.
+
+Scaffold `.gitattributes` in the repository root:
+
+```gitattributes
+# Auto detect text files and perform LF normalization on checkout
+* text=auto eol=lf
+
+# Explicit shell script normalization (strictly LF across Windows, macOS, Linux)
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+
+# PowerShell scripts (support Windows execution while keeping normalized text)
+*.ps1 text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+
+# Documentation & Structured Data
+*.md text diff=markdown
+*.json text
+*.yml text
+*.yaml text
+
+# Binary assets (avoid corruption or line-ending conversions)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.pdf binary
+
+# Release Archive Exclusions (keep distribution tarballs clean)
+.github export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+```
+
+### Key Technical Mechanics
+- `eol=lf`: Enforces Unix line endings so POSIX shell scripts (`install.sh`, CI scripts) do not crash when cloned on Windows.
+- `diff=markdown`: Optimizes `git diff` output to display Markdown headings and structural changes accurately.
+- `binary`: Prevents accidental line-ending conversions and corruptions on images and icons.
+- `export-ignore`: Excludes internal CI, issue templates, and git configuration from release archives produced by `git archive`.

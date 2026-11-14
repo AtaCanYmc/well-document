@@ -87,6 +87,7 @@ Generate only missing or requested files:
 - **`README.md`**: Minimalist banner/badge header (with CI status badge), single-sentence technical definition, **hyperlinked Table of Contents**, **turnkey Quick Start (featuring Docker fast-path when container manifests exist)**, architecture tree (with Mermaid where relevant), verifiable examples, and a conditional high-signal FAQ section when warranted.
 - **Scoped Subfolder `README.md`** *(Conditional)*: Independent README files inside modular sub-packages (`packages/*`, `apps/*`, `crates/*`, `skills/*`) with localized Quick Start, API exports, and a `[← Back to Root Repository]` link.
 - **`.gitignore`**: Complete ignore rules for the detected runtime(s), IDEs, OS metadata, and secret files (`.env`).
+- **`.gitattributes`**: Cross-platform line ending normalization (`* text=auto eol=lf`, `*.sh text eol=lf`), binary asset protection, and clean release archive exclusions (`export-ignore`).
 - **`SECURITY.md`**: Active version support table, encrypted or private disclosure workflow, 48-hour response SLA.
 - **`CONTRIBUTING.md`**: Conventional Commits specification, branch naming, local test commands, PR verification checklist.
 - **`LICENSE`**: Legally compatible open-source license (MIT, Apache-2.0, MPL-2.0, AGPL-3.0) determined by dependency triage. Must include accurate current calendar year and extracted copyright owner with zero placeholder bracket residue.
