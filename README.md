@@ -239,10 +239,12 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 ├── .github/
 │   ├── ISSUE_TEMPLATE/              # GitHub issue forms (bug reports, feature requests & config)
 │   ├── PULL_REQUEST_TEMPLATE/       # Standardized pull request template
+│   ├── CODEOWNERS                   # PR review responsibility assignment
 │   ├── dependabot.yml               # Automated weekly dependency updates
 │   └── workflows/
 │       ├── ci.yml                   # Continuous integration (syntax, governance, anti-slop)
 │       └── release-please.yml       # Automated CHANGELOG & semantic versioning releases
+├── .editorconfig                    # Universal IDE & editor formatting rules
 ├── .gitattributes                  # Git line-ending normalization & export filters
 ├── .markdownlint.json               # Markdown lint rules (relaxed for tables, Mermaid & HTML)
 ├── skills/

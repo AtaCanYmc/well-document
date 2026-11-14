@@ -1,0 +1,10 @@
+# Global code ownership for well-document
+* @AtaCanYmc
+
+# Automation & release workflows
+/.github/ @AtaCanYmc
+
+# Governance & legal policies
+/LICENSE @AtaCanYmc
+/SECURITY.md @AtaCanYmc
+/CONTRIBUTING.md @AtaCanYmc

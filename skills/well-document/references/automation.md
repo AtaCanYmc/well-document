@@ -431,3 +431,101 @@ Scaffold `.gitattributes` in the repository root:
 - `diff=markdown`: Optimizes `git diff` output to display Markdown headings and structural changes accurately.
 - `binary`: Prevents accidental line-ending conversions and corruptions on images and icons.
 - `export-ignore`: Excludes internal CI, issue templates, and git configuration from release archives produced by `git archive`.
+
+---
+
+## 9. Universal Editor Configuration (`.editorconfig`)
+
+Ensure cross-editor formatting consistency (VS Code, Cursor, JetBrains, Vim) without requiring manual plugin configuration.
+
+Scaffold `.editorconfig` in the repository root:
+
+```ini
+# http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.py]
+indent_size = 4
+
+[*.{sh,bash,zsh}]
+indent_size = 2
+end_of_line = lf
+
+[*.{ps1,psm1,psd1}]
+indent_size = 4
+end_of_line = crlf
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+---
+
+## 10. Code Ownership & PR Routing (`.github/CODEOWNERS`)
+
+Direct pull request reviews automatically to authorized maintainers or subsystem teams.
+
+Scaffold `.github/CODEOWNERS`:
+
+```text
+# Global code ownership
+* @OWNER
+
+# Workflows and automation manifests
+/.github/ @OWNER
+
+# Security, licensing, and governance
+/LICENSE @OWNER
+/SECURITY.md @OWNER
+/CONTRIBUTING.md @OWNER
+```
+
+---
+
+## 11. Internal Documentation Link Validation (CI)
+
+Prevent broken markdown links and dead relative anchors from decaying repository documentation over time.
+
+Add to `.github/workflows/ci.yml`:
+
+```yaml
+      - name: Validate Internal Documentation Links
+        run: |
+          python3 -c '
+          import re, glob, os
+
+          def check_file(f):
+              content = open(f, encoding="utf-8").read()
+              # Strip code fences and inline spans to avoid false matches
+              content = re.sub(r"```[\s\S]*?```", "", content)
+              content = re.sub(r"`[^`]*`", "", content)
+              links = re.findall(r"\[.*?\]\((?!https?://|mailto:)(.*?)(?:#.*)?\)", content)
+              broken = []
+              for link in links:
+                  link = link.strip()
+                  if not link or link.startswith("#"): continue
+                  target = os.path.normpath(os.path.join(os.path.dirname(f), link))
+                  if not os.path.exists(target):
+                      broken.append(f"{f} -> {link} (resolved: {target})")
+              return broken
+
+          all_broken = []
+          for f in glob.glob("**/*.md", recursive=True):
+              all_broken.extend(check_file(f))
+
+          if all_broken:
+              print("Error: Broken internal documentation links detected:")
+              for b in all_broken:
+                  print("  -", b)
+              exit(1)
+          print("Internal documentation links verified.")
+          '
+```
