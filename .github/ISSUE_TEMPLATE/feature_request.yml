@@ -1,0 +1,39 @@
+name: Feature Request
+description: Propose a new governance rule, template archetype, or skill capability
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check existing issues and roadmaps to ensure this proposal is not already tracked.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Describe the friction or architectural gap this feature resolves.
+      placeholder: Currently, well-document does not support...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: Detail the requested behavior, template format, or anti-slop rule.
+      placeholder: Add support for...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe any alternative workflows or mitigations considered.
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Contributor Checklist
+      options:
+        - label: I searched existing issues and PRs before creating this proposal.
+          required: true
+        - label: This proposal complies with anti-AI-slop rules and zero-buzzword discipline.
+          required: true

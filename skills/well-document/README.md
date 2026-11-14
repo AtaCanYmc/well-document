@@ -29,7 +29,7 @@ skills/well-document/
 └── references/              # Specialized knowledge bases loaded on demand
     ├── anti-patterns.md     # Catalog of AI-slop documentation tells & remediations
     ├── archetypes.md        # Layout standards for CLI, Library, Web, Monorepos, and Subfolders
-    ├── automation.md        # CI/CD, Dependabot & Release Please integration standards
+    ├── automation.md        # CI/CD, Dependabot, Release Please & Issue/PR templates
     ├── diagrams.md          # Technical Mermaid diagram standards & anti-slop rules
     ├── licensing.md         # Open-source legal triage & dependency compatibility matrix
     └── slop-test.md         # 6-point pre-emit audit scorecard
@@ -51,7 +51,7 @@ When loaded into an AI coding assistant, the skill activates the following prima
 
 - [`references/anti-patterns.md`](references/anti-patterns.md): Banned buzzwords, emoji rules, and hallucination preventions.
 - [`references/archetypes.md`](references/archetypes.md): Document order for libraries, CLIs, web apps, monorepos, and subfolders.
-- [`references/automation.md`](references/automation.md): GitHub Actions CI matrices, Dependabot, and Release Please.
+- [`references/automation.md`](references/automation.md): GitHub Actions CI matrices, Dependabot, Release Please, and Issue/PR templates.
 - [`references/diagrams.md`](references/diagrams.md): Clean Mermaid flowchart, sequence, and state diagrams.
 - [`references/licensing.md`](references/licensing.md): Copyleft infection triage and license compatibility.
 - [`references/slop-test.md`](references/slop-test.md): 6-point pre-emit scorecard (G1–G6).

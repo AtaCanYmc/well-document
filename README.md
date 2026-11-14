@@ -216,6 +216,8 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 ```text
 .
 ├── .github/
+│   ├── ISSUE_TEMPLATE/              # GitHub issue forms (bug reports, feature requests & config)
+│   ├── PULL_REQUEST_TEMPLATE/       # Standardized pull request template
 │   ├── dependabot.yml               # Automated weekly dependency updates
 │   └── workflows/
 │       ├── ci.yml                   # Continuous integration (syntax, governance, anti-slop)
@@ -227,7 +229,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │       └── references/              # Knowledge bases loaded by the agent
 │           ├── anti-patterns.md     # Catalog of AI-slop documentation tells & fixes
 │           ├── archetypes.md        # Layout standards (CLI, Library, Web, Monorepo)
-│           ├── automation.md        # CI/CD, Dependabot & Release Please integration standards
+│           ├── automation.md        # CI/CD, Dependabot, Release Please & Issue/PR templates
 │           ├── diagrams.md          # Technical Mermaid diagram standards & anti-slop rules
 │           ├── licensing.md         # Open-source legal triage & dependency compatibility matrix
 │           └── slop-test.md         # 6-point pre-emit audit scorecard
