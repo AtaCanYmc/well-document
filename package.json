@@ -22,6 +22,9 @@
   "files": [
     "skills",
     "install.sh",
-    "install.ps1"
+    "install.ps1",
+    "plugin.json",
+    ".claude-plugin",
+    ".cursor-plugin"
   ]
 }

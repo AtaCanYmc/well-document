@@ -245,9 +245,12 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │       ├── ci.yml                   # Continuous integration (syntax, governance, anti-slop)
 │       ├── owner-auto-merge.yml     # Automated squash merge for repository owner PRs
 │       └── release-please.yml       # Automated CHANGELOG & semantic versioning releases
+├── .claude-plugin/                  # Claude Code plugin manifest
+├── .cursor-plugin/                  # Cursor plugin manifest
 ├── .editorconfig                    # Universal IDE & editor formatting rules
 ├── .gitattributes                  # Git line-ending normalization & export filters
 ├── .markdownlint.json               # Markdown lint rules (relaxed for tables, Mermaid & HTML)
+├── plugin.json                      # Google Antigravity & Gemini CLI plugin manifest
 ├── skills/
 │   └── well-document/
 │       ├── README.md                # Scoped subfolder documentation for the skill distribution

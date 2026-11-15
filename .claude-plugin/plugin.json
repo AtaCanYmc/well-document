@@ -1,0 +1,23 @@
+{
+  "name": "well-document",
+  "description": "Anti-AI-slop repository governance and documentation skill for AI coding assistants.",
+  "version": "1.0.0",
+  "author": {
+    "name": "AtaCanYmc",
+    "url": "https://github.com/AtaCanYmc"
+  },
+  "homepage": "https://github.com/AtaCanYmc/well-document",
+  "repository": "https://github.com/AtaCanYmc/well-document",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "governance",
+    "anti-slop",
+    "readme",
+    "agent-skill",
+    "claude-code"
+  ],
+  "skills": [
+    "./skills/well-document"
+  ]
+}
