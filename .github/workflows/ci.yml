@@ -7,11 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  validate:
+  validate-scripts:
+    name: Validate Scripts & Tools
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Validate Shell Script Syntax
         run: |
@@ -20,61 +21,11 @@ jobs:
             sh -n "$f"
           done
 
-      - name: Verify Governance Files
+      - name: Test Grounding & Anti-Slop Tooling
         run: |
-          for f in README.md LICENSE CONTRIBUTING.md SECURITY.md ROADMAP.md; do
-            if [ ! -f "$f" ]; then
-              echo "Error: Missing governance file: $f"
-              exit 1
-            fi
-          done
+          python3 scripts/verify-grounding.py
+          python3 scripts/verify-anti-slop.py
 
-      - name: Anti-AI-Slop Linter
-        run: |
-          FORBIDDEN="seamlessly|blazingly fast|cutting-edge|revolutionary|comprehensive and robust|effortlessly"
-          # Check body text while excluding the explicit definition list of banned buzzwords
-          SLOP_MATCHES=$(grep -E -i "$FORBIDDEN" README.md | grep -v -E "Strips meaningless|Zero Buzzword" || true)
-          if [ -n "$SLOP_MATCHES" ]; then
-            echo "Error: Forbidden marketing buzzwords found in documentation:"
-            echo "$SLOP_MATCHES"
-            exit 1
-          fi
-
-          # Check for long dashes (em-dash) in README
-          if grep -q "—" README.md; then
-            echo "Error: Forbidden long dash (em-dash) detected in README.md."
-            exit 1
-          fi
-          echo "Anti-AI-slop check passed."
-
-      - name: Validate Internal Documentation Links
-        run: |
-          python3 -c '
-          import re, glob, os
-
-          def check_file(f):
-              content = open(f, encoding="utf-8").read()
-              # Strip fenced code blocks and inline code
-              content = re.sub(r"```[\s\S]*?```", "", content)
-              content = re.sub(r"`[^`]*`", "", content)
-              links = re.findall(r"\[.*?\]\((?!https?://|mailto:)(.*?)(?:#.*)?\)", content)
-              broken = []
-              for link in links:
-                  link = link.strip()
-                  if not link or link.startswith("#"): continue
-                  target = os.path.normpath(os.path.join(os.path.dirname(f), link))
-                  if not os.path.exists(target):
-                      broken.append(f"{f} -> {link} (resolved: {target})")
-              return broken
-
-          all_broken = []
-          for f in glob.glob("**/*.md", recursive=True):
-              all_broken.extend(check_file(f))
-
-          if all_broken:
-              print("Error: Broken internal documentation links detected:")
-              for b in all_broken:
-                  print("  -", b)
-              exit(1)
-          print("Internal documentation links verified.")
-          '
+  governance-gate:
+    name: Reusable Governance Gate
+    uses: ./.github/workflows/well-document-gate.yml

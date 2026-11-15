@@ -98,9 +98,11 @@ Generate only missing or requested files:
 - **`.github/ISSUE_TEMPLATE/`**: Structured issue forms (`bug_report.yml`, `feature_request.yml`) and `config.yaml` with `blank_issues_enabled: false` and security redirects.
 - **`.github/PULL_REQUEST_TEMPLATE/`**: Standard pull request template (`pull_request_template.md`) enforcing Conventional Commits, itemized changes, and explicit verification steps.
 - **`.github/workflows/ci.yml`** *(Conditional)*: Automated testing and validation pipeline tailored to detected runtimes (Python, Node.js, Rust, Go, or Shell/Markdown).
+- **`.github/workflows/well-document-gate.yml`** *(Conditional)*: Reusable GitHub Actions workflow enforcing anti-slop rules, governance file checks, and markdown link grounding.
 - **`.github/dependabot.yml`** *(Conditional)*: Automated dependency update schedules when package manifests or CI workflows exist.
 - **`.github/workflows/release-please.yml`** *(Conditional)*: Automated CHANGELOG and semantic release tagging when Conventional Commits are followed.
 - **`.github/workflows/owner-auto-merge.yml`** *(Conditional)*: Automated squash-merge queue for repository owner pull requests once all required CI status checks pass.
+- **`.pre-commit-hooks.yaml`** *(Conditional)*: Pre-commit framework hooks verifying relative link grounding and anti-slop constraints before commit.
 
 ### Step 3: Self-Critique & Pre-Emit Verification
 Score the generated documentation against the 6 gates in [`references/slop-test.md`](references/slop-test.md):

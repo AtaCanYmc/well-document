@@ -31,8 +31,8 @@ This roadmap outlines the planned development phases, feature releases, and arch
 
 - [x] Native plugin manifests for Claude Code (`.claude-plugin/plugin.json`), Cursor (`.cursor-plugin/plugin.json`), and Antigravity (`plugin.json`).
 - [x] Repository owner pull request auto-merge workflow (`.github/workflows/owner-auto-merge.yml`).
-- [ ] GitHub Actions reusable workflow (`well-document-gate.yml`) to enforce anti-slop rules on incoming PRs.
-- [ ] Pre-commit hook integration to verify codebase grounding before commit.
+- [x] GitHub Actions reusable workflow (`well-document-gate.yml`) to enforce anti-slop rules on incoming PRs.
+- [x] Pre-commit hook integration to verify codebase grounding before commit.
 
 ---
 

@@ -4,12 +4,12 @@ This document details battle-tested patterns for using and enforcing `well-docum
 
 ---
 
-## Recipe 1: CI Governance Audit in GitHub Actions
+## Recipe 1: Reusable CI Governance Gate in GitHub Actions
 
-Automatically verify that all repository documentation complies with anti-AI-slop rules on every Pull Request:
+Automatically verify that all repository documentation complies with anti-AI-slop rules on every Pull Request using the reusable `well-document-gate.yml` workflow:
 
 ```yaml
-name: Repository Documentation Audit
+name: Repository Governance Audit
 
 on:
   pull_request:
@@ -18,36 +18,13 @@ on:
       - '.github/**'
 
 jobs:
-  audit-docs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Verify Essential Governance Files
-        run: |
-          for file in README.md LICENSE CONTRIBUTING.md SECURITY.md; do
-            if [ ! -f "$file" ]; then
-              echo "Error: Missing required governance file: $file"
-              exit 1
-            fi
-          done
-
-      - name: Scan for Forbidden AI-Slop Buzzwords
-        run: |
-          FORBIDDEN="seamlessly|blazingly fast|cutting-edge|revolutionary|comprehensive and robust|effortlessly"
-          if grep -E -i "$FORBIDDEN" README.md; then
-            echo "Error: Forbidden marketing buzzwords detected in README.md"
-            exit 1
-          fi
-
-      - name: Enforce Emoji Discipline in Body Text
-        run: |
-          # Fails if rocket, fire, or sparkle emojis appear
-          if grep -P "[\x{1F680}\x{1F525}\x{2728}\x{1F389}]" README.md; then
-            echo "Error: Unapproved emojis detected in README.md"
-            exit 1
-          fi
+  governance-gate:
+    uses: AtaCanYmc/well-document/.github/workflows/well-document-gate.yml@main
+    with:
+      check_governance: true
+      check_slop: true
+      check_links: true
+      readme_path: "README.md"
 ```
 
 ---
@@ -82,25 +59,40 @@ When running `well-document` on a monorepo, include workspace topologies:
 
 ---
 
-## Recipe 4: Local Git Pre-Commit Hook
+## Recipe 4: Local Git Pre-Commit Hook Integration
 
-Install a pre-commit check to prevent committing ungrounded links:
+Enforce codebase grounding and anti-slop rules on every staged commit before code reaches GitHub.
+
+### Option A: Using the `pre-commit` Framework
+
+Add `well-document` to your `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/AtaCanYmc/well-document
+    rev: v1.3.0
+    hooks:
+      - id: well-document-grounding
+      - id: well-document-anti-slop
+```
+
+Install and run:
 
 ```bash
-#!/usr/bin/env sh
-# .git/hooks/pre-commit
-# Checks for broken markdown relative links
+pre-commit install
+pre-commit run --all-files
+```
 
-git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | while read -r file; do
-  # Extract markdown links like [text](path/to/file)
-  grep -o '\[.*\]([a-zA-Z0-9_\/\.\-]*\.[a-zA-Z0-9]*)' "$file" | while read -r link; do
-    target=$(echo "$link" | sed -E 's/.*\]\((.*)\)/\1/')
-    if [ ! -e "$target" ] && [ ! -e "$(dirname "$file")/$target" ]; then
-      echo "Pre-commit check failed: Broken link '$target' in $file"
-      exit 1
-    fi
-  done
-done
+### Option B: Standalone Verification Scripts
+
+Run the bundled zero-dependency verification scripts directly in local git hooks or developer environments:
+
+```bash
+# Verify that relative links and file paths physically resolve
+python3 scripts/verify-grounding.py
+
+# Verify that staged markdown adheres to anti-slop constraints
+python3 scripts/verify-anti-slop.py
 ```
 
 ---

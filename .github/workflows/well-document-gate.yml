@@ -1,0 +1,90 @@
+name: Well Document Governance Gate
+
+on:
+  workflow_call:
+    inputs:
+      check_governance:
+        description: "Verify essential governance files (README, LICENSE, CONTRIBUTING, SECURITY, ROADMAP)"
+        required: false
+        type: boolean
+        default: true
+      check_slop:
+        description: "Enforce anti-AI-slop rules (banned buzzwords and long dashes)"
+        required: false
+        type: boolean
+        default: true
+      check_links:
+        description: "Validate internal markdown relative links and grounding"
+        required: false
+        type: boolean
+        default: true
+      readme_path:
+        description: "Path to root README file"
+        required: false
+        type: string
+        default: "README.md"
+
+jobs:
+  gate:
+    name: Anti-Slop & Governance Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Essential Governance Files
+        if: ${{ inputs.check_governance }}
+        run: |
+          for f in "${{ inputs.readme_path }}" LICENSE CONTRIBUTING.md SECURITY.md ROADMAP.md; do
+            if [ ! -f "$f" ]; then
+              echo "::error file=$f::Missing required governance file: $f"
+              exit 1
+            fi
+          done
+          echo "Governance files verified."
+
+      - name: Run Anti-AI-Slop Linter
+        if: ${{ inputs.check_slop }}
+        run: |
+          if [ -f "scripts/verify-anti-slop.py" ]; then
+            python3 scripts/verify-anti-slop.py "${{ inputs.readme_path }}"
+          else
+            README_FILE="${{ inputs.readme_path }}"
+            FORBIDDEN="seamlessly|blazingly fast|cutting-edge|revolutionary|comprehensive and robust|effortlessly"
+            SLOP_MATCHES=$(grep -E -i "$FORBIDDEN" "$README_FILE" | grep -v -E "Strips meaningless|Zero Buzzword|Banned Buzzwords|Catalog of AI-slop" || true)
+            if [ -n "$SLOP_MATCHES" ]; then
+              echo "::error file=$README_FILE::Forbidden marketing buzzwords found in documentation:"
+              echo "$SLOP_MATCHES"
+              exit 1
+            fi
+            if grep -q "—" "$README_FILE"; then
+              echo "::error file=$README_FILE::Forbidden long dash detected in $README_FILE."
+              exit 1
+            fi
+          fi
+          echo "Anti-AI-slop check passed."
+
+      - name: Validate Codebase Grounding & Links
+        if: ${{ inputs.check_links }}
+        run: |
+          if [ -f "scripts/verify-grounding.py" ]; then
+            python3 scripts/verify-grounding.py
+          else
+            python3 -c '
+            import re, glob, os, sys
+            broken = []
+            for f in glob.glob("**/*.md", recursive=True):
+                content = re.sub(r"```[\s\S]*?```", "", open(f, encoding="utf-8").read())
+                content = re.sub(r"`[^`]*`", "", content)
+                for link in re.findall(r"\[.*?\]\((?!https?://|mailto:)(.*?)(?:#.*)?\)", content):
+                    link = link.strip().split("?")[0]
+                    if not link or link.startswith("#"): continue
+                    target = os.path.normpath(os.path.join(os.path.dirname(f), link))
+                    if not os.path.exists(target):
+                        broken.append(f"{f} -> {link}")
+            if broken:
+                print("Broken links detected:", broken, file=sys.stderr)
+                sys.exit(1)
+            '
+          fi
+          echo "Codebase grounding and internal links verified."

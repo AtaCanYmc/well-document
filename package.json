@@ -21,10 +21,12 @@
   "license": "MIT",
   "files": [
     "skills",
+    "scripts",
     "install.sh",
     "install.ps1",
     "plugin.json",
     ".claude-plugin",
-    ".cursor-plugin"
+    ".cursor-plugin",
+    ".pre-commit-hooks.yaml"
   ]
 }
