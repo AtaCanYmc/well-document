@@ -1,4 +1,4 @@
-[← Read Original in English](../../README.md)
+[← İngilizce Orijinalini Oku](../../README.md)
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 
 # well-document
 
-**Anti-AI-slop repository governance and documentation skill for AI coding assistants.**
+**Yapay zeka kodlama asistanları için anti-slop depo yönetimi ve teknik dokümantasyon yeteneği.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 [![CI](https://github.com/AtaCanYmc/well-document/actions/workflows/ci.yml/badge.svg)](../../.github/workflows/ci.yml)
@@ -18,68 +18,68 @@
 
 ---
 
-## Overview
+## Genel Bakış
 
-`well-document` is an open-source AI agent skill (compatible with Cursor, Claude Code, Antigravity, Windsurf, and custom agentic workflows) that transforms raw, undocumented codebases into clean, battle-tested open-source repositories.
+`well-document`, ham ve dokümantasyonsuz kod depolarını açık kaynak standartlarında, doğrulanabilir ve üretime hazır projelere dönüştüren açık kaynaklı bir yapay zeka ajan yeteneğidir. Cursor, Claude Code, Google Antigravity, Windsurf ve özel ajan akışlarıyla tam uyumlu çalışır.
 
-Unlike generic boilerplate scripts or AI generators that produce emoji vomit and buzzword-heavy marketing fluff, `well-document` enforces structural rigor, authentic technical specifications, and production-grade governance.
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Technical Specifications](#technical-specifications)
-- [Installation](#installation)
-  - [Agent Compatibility Matrix](#agent-compatibility-matrix)
-  - [Option 1: Skills CLI (Recommended)](#option-1-skills-cli-recommended)
-  - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer-macos--linux)
-  - [Option 3: PowerShell Installer (Windows)](#option-3-powershell-installer-windows-powershell--cmd)
-  - [Option 4: Manual Configuration](#option-4-manual-agent-configuration)
-  - [Updating](#updating)
-- [Quick Start & Usage Scenarios](#quick-start--usage-scenarios)
-- [Repository Structure](#repository-structure)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Documentation](#documentation)
-- [License](#license)
+Emoji kirliliği ve pazarlama jargonu üreten geleneksel şablon araçlarının aksine `well-document`; yapısal disiplin, gerçek teknik spesifikasyonlar ve endüstri standardı yönetim kuralları uygular.
 
 ---
 
-## Technical Specifications
+## İçindekiler
 
-- **Zero Buzzword Policy**: Strips meaningless adjectives (*"seamless"*, *"blazingly fast"*, *"revolutionary"*) in favor of concrete architectural contracts.
-- **Strict Emoji Discipline**: Completely eliminates frivolous inline emojis. Top-level headers may feature at most one neutral, functional icon.
-- **Grounding Verification**: Ensures all referenced file paths, package scripts, and dependencies physically exist on disk before emitting documentation.
-- **Archetype Awareness**: Automatically selects the optimal documentation structure based on the project's interface:
-  - **CLI Utility**: Flags, shell pipelines, subcommands, config files.
-  - **Library / SDK**: API surface, typed import snippets, runtime matrices.
-  - **Web / Backend Service**: Docker, environment variables (`.env.example`), migrations, endpoints.
-  - **Monorepo**: Workspace mappings, topological build commands.
-  - **Machine Learning / AI**: Model cards, dataset manifests with SHA-256 checksums, VRAM requirements, W&B configs.
-  - **Hardware & Embedded**: Microcontroller pinouts, Flash and SRAM memory maps, toolchains, schematics, flashing.
-- **Governance Standards**: Implements private security vulnerability disclosure protocols (48h response SLA) and Conventional Commits enforcement.
-- **User-Confirmed Scaffolding**: Never unilaterally dumps unwanted files into a repository. Itemizes candidate governance documents and requests explicit user approval before writing anything to disk.
+- [Genel Bakış](#genel-bakış)
+- [Teknik Özellikler](#teknik-özellikler)
+- [Kurulum](#kurulum)
+  - [Ajan Uyumluluk Matrisi](#ajan-uyumluluk-matrisi)
+  - [Seçenek 1: Skills CLI (Önerilen)](#seçenek-1-skills-cli-önerilen)
+  - [Seçenek 2: Tek Satırlık POSIX Kurulumu](#seçenek-2-tek-satırlık-posix-kurulumu-macos-ve-linux)
+  - [Seçenek 3: PowerShell Kurulumu](#seçenek-3-powershell-kurulumu-windows-powershell-ve-cmd)
+  - [Seçenek 4: Manuel Ajan Yapılandırması](#seçenek-4-manuel-ajan-yapılandırması)
+  - [Güncelleme](#güncelleme)
+- [Hızlı Başlangıç ve Kullanım Senaryoları](#hızlı-başlangıç-ve-kullanım-senaryoları)
+- [Depo Mimarisi](#depo-mimarisi)
+- [Sıkça Sorulan Sorular](#sıkça-sorulan-sorular)
+- [Dokümantasyon](#dokümantasyon)
+- [Lisans](#lisans)
 
 ---
 
-## Installation
+## Teknik Özellikler
 
-`well-document` can be installed globally across your system agent directories or linked directly into a specific project repository.
+- **Pazarlama Jargonu Yasağı**: İçi boş niteleyicileri ayıklar. Yerine somut teknik mimari tanımları ve sözleşmeler koyar.
+- **Sıkı Emoji Disiplini**: Gövde metinlerindeki gereksiz emojileri tamamen kaldırır. Ana başlıklarda yalnızca görsel ayrım sağlayan nötr simgeler kullanılabilir.
+- **Fiziki Doğrulama (Grounding)**: Dokümantasyon yayılmadan önce referans verilen tüm dosya yollarının, paket komutlarının ve bağımlılıkların diskte fiziki olarak var olduğunu denetler.
+- **Arketip Farkındalığı**: Projenin arabirim türüne göre en uygun dokümantasyon yapısını otomatik belirler:
+  - **CLI Aracı**: Bayraklar, kabuk boru hatları, alt komutlar, yapılandırma şemaları.
+  - **Kütüphane / SDK**: API yüzeyi, tipli kod blokları, çalışma zamanı matrisleri.
+  - **Web / Arka Plan Servisi**: Docker, ortam değişkenleri (`.env.example`), veritabanı geçişleri, uç noktalar.
+  - **Monorepo**: Çalışma alanı haritaları, topolojik derleme sıraları.
+  - **Makine Öğrenimi / AI**: Model kartları, SHA-256 sağlama toplamlı veri kümesi manifestoları, VRAM limitleri, W&B konfigürasyonları.
+  - **Gömülü Sistemler / Donanım**: Mikrodenetleyici pinout tabloları, Flash/SRAM bellek haritaları, araç zincirleri, şematikler, flash komutları.
+- **Yönetim Standartları**: Özel güvenlik açığı bildirim protokolleri (48 saat yanıt taahhüdü) ve Conventional Commits kuralları uygular.
+- **Kullanıcı Onaylı İskelet**: Depoya tek taraflı dosya eklemez. Önerilen yönetim belgelerini gerekçeleriyle listeler ve kullanıcı açık onay vermeden diske yazmaz.
 
-### Agent Compatibility Matrix
+---
 
-| AI Agent Environment | Global Skill Directory | Workspace-Level Path | Status |
+## Kurulum
+
+`well-document` sisteminizdeki ajan dizinlerine genel olarak kurulabilir ya da doğrudan belirli bir proje deposuna bağlanabilir.
+
+### Ajan Uyumluluk Matrisi
+
+| Yapay Zeka Ajan Ortamı | Genel Yetenek Dizini | Proje Düzeyi Dizin | Durum |
 | :--- | :--- | :--- | :---: |
-| **Google Antigravity / Gemini CLI** | `~/.gemini/antigravity/skills/` | `.gemini/skills/` | Verified |
-| **Claude Code** | `~/.claude/skills/` | `.claude/skills/` | Verified |
-| **Cursor** | `~/.cursor/skills/` | `.cursor/skills/` | Verified |
-| **OpenAI Codex / Copilot CLI** | `~/.codex/skills/` | `.codex/skills/` | Verified |
+| **Google Antigravity / Gemini CLI** | `~/.gemini/antigravity/skills/` | `.gemini/skills/` | Doğrulandı |
+| **Claude Code** | `~/.claude/skills/` | `.claude/skills/` | Doğrulandı |
+| **Cursor** | `~/.cursor/skills/` | `.cursor/skills/` | Doğrulandı |
+| **OpenAI Codex / Copilot CLI** | `~/.codex/skills/` | `.codex/skills/` | Doğrulandı |
 
 ---
 
-### Option 1: Skills CLI (Recommended)
+### Seçenek 1: Skills CLI (Önerilen)
 
-The standard, package-managed way to install AI agent skills across Cursor, Claude Code, Antigravity, and Codex:
+Cursor, Claude Code, Antigravity ve Codex ortamlarında yetenek yönetimi için paket yöneticisi standardı:
 
 ```bash
 # Add to current workspace/project repository
@@ -94,9 +94,9 @@ npx skills add AtaCanYmc/well-document --agent cursor claude-code antigravity -y
 
 ---
 
-### Option 2: One-Line POSIX Installer (macOS & Linux)
+### Seçenek 2: Tek Satırlık POSIX Kurulumu (macOS ve Linux)
 
-Direct shell installer with zero dependencies:
+Harici bağımlılık gerektirmeyen doğrudan kabuk yükleyicisi:
 
 ```bash
 # Auto-detect all installed agent environments
@@ -112,9 +112,9 @@ curl -fsSL https://raw.githubusercontent.com/AtaCanYmc/well-document/main/instal
 
 ---
 
-### Option 3: PowerShell Installer (Windows PowerShell & CMD)
+### Seçenek 3: PowerShell Kurulumu (Windows PowerShell ve CMD)
 
-Direct installer for Windows environments with zero dependencies:
+Windows ortamları için bağımsız yükleyici:
 
 ```powershell
 # In PowerShell (Auto-detect all installed agent environments):
@@ -136,10 +136,10 @@ powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.c
 
 ---
 
-### Option 4: Manual Agent Configuration
+### Seçenek 4: Manuel Ajan Yapılandırması
 
-#### 1. Google Antigravity & Gemini CLI
-Add `well-document` to your global or project-level Gemini/Antigravity skills path:
+#### 1. Google Antigravity ve Gemini CLI
+`well-document` yeteneğini genel veya proje düzeyindeki yetenek yolunuza ekleyin:
 ```bash
 # Global Antigravity skills directory
 mkdir -p ~/.gemini/antigravity/skills/well-document
@@ -151,7 +151,7 @@ cp -r path/to/well-document/* .gemini/skills/well-document/
 ```
 
 #### 2. Claude Code
-Install into Claude Code's recognized skill inventory:
+Claude Code yetenek envanterine ekleyin:
 ```bash
 # Global skills directory
 mkdir -p ~/.claude/skills/well-document
@@ -163,7 +163,7 @@ cp -r path/to/well-document/* .claude/skills/well-document/
 ```
 
 #### 3. Cursor
-Configure as a Cursor skill or rule directory:
+Cursor kural veya yetenek dizinine ekleyin:
 ```bash
 # Global Cursor skill definition
 mkdir -p ~/.cursor/skills/well-document
@@ -174,8 +174,8 @@ mkdir -p .cursor/skills/well-document
 cp -r path/to/well-document/* .cursor/skills/well-document/
 ```
 
-#### 4. OpenAI Codex & GitHub Copilot
-Mount into your Codex / Copilot CLI instruction directory:
+#### 4. OpenAI Codex ve GitHub Copilot
+Codex talimat yoluna bağlayın:
 ```bash
 # Global Codex instruction path
 mkdir -p ~/.codex/skills/well-document
@@ -187,9 +187,9 @@ export CODEX_INSTRUCTION_PATH="$HOME/.codex/skills/well-document/SKILL.md"
 
 ---
 
-### Updating
+### Güncelleme
 
-Rerun the installer or update command corresponding to your installation method:
+Kullandığınız kurulum yöntemine uygun güncelleme komutunu çalıştırın:
 
 ```bash
 # Skills CLI
@@ -207,45 +207,45 @@ git -C ~/.gemini/antigravity/skills/well-document pull
 
 ---
 
-## Quick Start & Usage Scenarios
+## Hızlı Başlangıç ve Kullanım Senaryoları
 
-Once installed, invoke `well-document` within your AI coding assistant prompt:
+Kurulum tamamlandıktan sonra yapay zeka asistanınızda `well-document` komutunu çalıştırın:
 
-### Scenario 1: Initializing a Raw Codebase
+### Senaryo 1: Ham Bir Kod Deposunu Yapılandırma
 
-> **Prompt:** `"well-document init"`
+> **İstem:** `"well-document init"`
 
-The agent inspects your project manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, etc.), identifies the project archetype, presents candidate documentation files with rationale, requests your confirmation, and scaffolds only approved assets:
-- Clean, archetype-specific `README.md`
-- Comprehensive `.gitignore` matching your exact runtime
-- `SECURITY.md` with structured vulnerability reporting
-- `CONTRIBUTING.md` with Conventional Commits and PR criteria
-- Standard `LICENSE` (MIT)
-- `ROADMAP.md` grounded in your actual milestones
+Ajan proje bildirimlerinizi (`package.json`, `Cargo.toml`, `pyproject.toml`, vb.) inceler, depo arketipini belirler, aday yönetim belgelerini gerekçeleriyle sunar, onayınızı alır ve yalnızca onaylanan varlıkları üretir:
+- Temiz ve arketipe özel `README.md`
+- Çalışma zamanına uygun kapsamlı `.gitignore`
+- Yapılandırılmış güvenlik politikası (`SECURITY.md`)
+- Conventional Commits standartlarında `CONTRIBUTING.md`
+- Standart açık kaynak lisansı (`LICENSE`)
+- Gerçek hedeflere dayalı `ROADMAP.md`
 
-### Scenario 2: Auditing Existing Repository Documentation
+### Senaryo 2: Mevcut Depo Dokümantasyonunu Denetleme
 
-> **Prompt:** `"well-document audit"`
+> **İstem:** `"well-document audit"`
 
-Evaluates your current documentation against the 6 evaluation gates (`G1–G6` in `references/slop-test.md`) and outputs an actionable punch list with zero unprompted file modifications.
+Mevcut dokümantasyonunuzu 6 değerlendirme kapısına göre inceler ve dosyalarda izinsiz değişiklik yapmadan somut bir denetim raporu sunar.
 
-### Scenario 3: Polishing a Bloated or AI-Slop Document
+### Senaryo 3: AI-Slop İçeren Dokümanı Sadeleştirme
 
-> **Prompt:** `"well-document polish README.md"`
+> **İstem:** `"well-document polish README.md"`
 
-Strips out rocket emojis, marketing copy, and unexecutable instructions, replacing them with accurate architectural descriptions and verifiable command blocks.
+Gereksiz emojileri, pazarlama cümlelerini ve çalıştırılamayan komutları ayıklar; yerlerine teknik mimari tanımları ve doğrulanmış komut blokları yerleştirir.
 
-### Scenario 4: Interactive Terminal Preview
+### Senaryo 4: İnteraktif Terminal Önizlemesi
 
-> **Prompt:** `"well-document preview README.md"`
+> **İstem:** `"well-document preview README.md"`
 
-Renders an ANSI-styled preview of your documentation directly in the terminal, evaluating all 6 anti-slop audit gates in real time with an inline scorecard.
+Dokümantasyonun ANSI biçimlendirmeli önizlemesini terminalde gösterir ve 6 denetim kapısını gerçek zamanlı puanlayarak skor kartı basar.
 
-### Scenario 5: Multi-Lingual Synchronization
+### Senaryo 5: Çok Dilli Dokümantasyon Senkronizasyonu
 
-> **Prompt:** `"well-document i18n --init tr"`
+> **İstem:** `"well-document i18n --init tr"`
 
-Scaffolds a translation template with verbatim code blocks and exact structural parity, or audits an existing translation against machine translation slop:
+Kod bloklarını ve başlık hiyerarşisini birebir koruyan çeviri şablonu çıkarır ya da mevcut çeviriyi denetler:
 
 ```bash
 python3 scripts/sync-i18n.py --source README.md --target docs/translations/README.tr.md --lang tr --audit
@@ -253,7 +253,7 @@ python3 scripts/sync-i18n.py --source README.md --target docs/translations/READM
 
 ---
 
-## Repository Structure
+## Depo Mimarisi
 
 ```text
 .
@@ -307,33 +307,32 @@ python3 scripts/sync-i18n.py --source README.md --target docs/translations/READM
 
 ---
 
-## Frequently Asked Questions
+## Sıkça Sorulan Sorular
 
-#### Does `well-document` send codebase telemetry or code snippets off-machine?
-No. `well-document` is a static AI agent skill consisting entirely of markdown rules and reference specifications. It executes strictly within your local AI agent session (Cursor, Claude Code, Antigravity) with zero telemetry, zero analytics, and zero external network calls.
+#### well-document kod parçalarını veya telemetri verilerini dış sunuculara gönderir mi?
+Hayır. `well-document` tamamen yerel markdown kurallarından ve referans özelliklerden oluşan statik bir ajandır. Tüm analiz ve üretim adımları yerel makinenizde yürütülür; harici sunuculara telemetri veya kod aktarımı yapılmaz.
 
-#### How does this differ from traditional boilerplate generators (Cookiecutter, Yeoman)?
-Traditional boilerplate generators copy static, rigid string templates and often overwrite or create fictional folders. `well-document` gives your AI assistant an anti-AI-slop protocol to inspect the real codebase tree, detect accurate entry points, infer project archetypes, and produce bespoke documentation that accurately reflects your real code.
+#### Bu aracın geleneksel şablon üreticilerden (Cookiecutter, Yeoman) farkı nedir?
+Geleneksel araçlar katı metin şablonlarını kopyalar ve genellikle var olmayan klasörler oluşturur. `well-document` ise yapay zeka asistanınıza gerçek dosya ağacını denetleme, giriş noktalarını saptama ve gerçek kod yapınızı yansıtan özel dokümantasyon üretme protokolü sağlar.
 
-#### Can our engineering team customize or enforce custom anti-slop rules?
-Yes. You can fork or link this skill and edit `skills/well-document/references/anti-patterns.md` to add team-specific banned jargon, custom CI badges, or internal security reporting endpoints.
+#### Mühendislik ekibimiz özel anti-slop kuralları tanımlayabilir mi?
+Evet. Bu depoyu fork edebilir veya bağlayabilirsiniz. `skills/well-document/references/anti-patterns.md` dosyasını düzenleyerek ekibinize özel yasaklı terimleri veya kurum içi CI kontrol noktalarını tanımlayabilirsiniz.
 
-#### Can I install this with `npx skills add`?
-Yes. `well-document` follows the standard Agent Skills specification. Once published to GitHub, any developer can install it via `npx skills add AtaCanYmc/well-document` or globally via `npx skills add AtaCanYmc/well-document -g`.
-
----
-
-## Documentation
-
-- [Contributing Guidelines](../../CONTRIBUTING.md)
-- [Security Policy](../../SECURITY.md)
-- [Project Roadmap](../../ROADMAP.md)
-- [Release History (Changelog)](../../CHANGELOG.md)
-- [Advanced Recipes](../../docs/recipes.md)
-- [Turkish Translation (Türkçe)](../../docs/translations/README.tr.md)
+#### npx skills add ile doğrudan kurulabilir mi?
+Evet. `well-document` Agent Skills standardına uygundur. `npx skills add AtaCanYmc/well-document` komutuyla projeye veya `-g` bayrağıyla tüm makineye kurulabilir.
 
 ---
 
-## License
+## Dokümantasyon
 
-This project is licensed under the MIT License. See [LICENSE](../../LICENSE) for details.
+- [Katkı Kılavuzu](../../CONTRIBUTING.md)
+- [Güvenlik Politikası](../../SECURITY.md)
+- [Proje Yol Haritası](../../ROADMAP.md)
+- [Sürüm Geçmişi (Changelog)](../../CHANGELOG.md)
+- [Gelişmiş Tarifler](../../docs/recipes.md)
+
+---
+
+## Lisans
+
+Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](../../LICENSE) belgesine bakın.
