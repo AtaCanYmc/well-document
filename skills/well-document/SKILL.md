@@ -14,13 +14,15 @@ A repository governance and documentation skill for AI coding assistants. Turns 
 
 ## Invocations & Verbs
 
-`well-document` operates through four explicit modes:
+`well-document` operates through explicit modular verbs:
 
 | Invocation | Action |
 | --- | --- |
-| `well-document init` *(default)* | Scans the codebase, detects language/runtime signatures, and scaffolds missing governance files with zero hallucinated content. |
+| `well-document init` *(default)* | Scans the codebase, detects language/runtime signatures, proposes candidate files, and scaffolds approved governance files. |
 | `well-document audit` | Inspects existing repository documentation against anti-AI-slop gates and returns a ranked punch list. **Makes no edits.** |
 | `well-document polish <file>` | Rewrites a single documentation file (`README.md`, `CONTRIBUTING.md`, etc.) to eliminate AI slop, prune filler adjectives, and inject technical precision. |
+| `well-document preview <file>` | Renders an interactive terminal preview of documentation with ANSI styling and a real-time 6-gate audit scorecard. |
+| `well-document i18n <action>` | Scaffolds or audits multi-lingual documentation against translation drift, mangled code blocks, and localized marketing slop. |
 | `well-document recipes` | Emits battle-tested recipes for CI governance enforcement, multi-package monorepos, and release automation. |
 
 ---

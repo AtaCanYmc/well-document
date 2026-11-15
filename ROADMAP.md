@@ -40,5 +40,5 @@ This roadmap outlines the planned development phases, feature releases, and arch
 
 - [x] Specialized archetypes for Machine Learning repositories (Model cards, Weights & Biases configs, dataset checksums).
 - [x] Hardware & Embedded Systems archetype (schematics, pinouts, memory maps).
-- [ ] Interactive terminal preview mode for local inspection before emission.
-- [ ] Multi-lingual documentation synchronizer (strictly audited against machine translation slop).
+- [x] Interactive terminal preview mode for local inspection before emission.
+- [x] Multi-lingual documentation synchronizer (strictly audited against machine translation slop).

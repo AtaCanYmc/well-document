@@ -233,6 +233,22 @@ Evaluates your current documentation against the 6 evaluation gates (`G1–G6` i
 
 Strips out rocket emojis, marketing copy, and unexecutable instructions, replacing them with accurate architectural descriptions and verifiable command blocks.
 
+### Scenario 4: Interactive Terminal Preview
+
+> **Prompt:** `"well-document preview README.md"`
+
+Renders an ANSI-styled preview of your documentation directly in the terminal, evaluating all 6 anti-slop audit gates in real time with an inline scorecard.
+
+### Scenario 5: Multi-Lingual Synchronization
+
+> **Prompt:** `"well-document i18n --init tr"`
+
+Scaffolds a translation template with verbatim code blocks and exact structural parity, or audits an existing translation against machine translation slop:
+
+```bash
+python3 scripts/sync-i18n.py --source README.md --target docs/translations/README.tr.md --lang tr --audit
+```
+
 ---
 
 ## Repository Structure
@@ -258,6 +274,8 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 ├── package.json                     # Skills CLI & npm package manifest
 ├── plugin.json                      # Google Antigravity & Gemini CLI plugin manifest
 ├── scripts/
+│   ├── preview.py                   # Interactive terminal markdown preview & audit inspector
+│   ├── sync-i18n.py                 # Multi-lingual documentation synchronizer and auditor
 │   ├── verify-anti-slop.py          # Standalone anti-slop and emoji hygiene scanner
 │   └── verify-grounding.py          # Standalone markdown relative link grounding validator
 ├── skills/
@@ -266,16 +284,18 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │       ├── SKILL.md                 # Primary AI agent skill definition & instructions
 │       └── references/              # Knowledge bases loaded by the agent
 │           ├── anti-patterns.md     # Catalog of AI-slop documentation tells & fixes
-│           ├── archetypes.md        # Layout standards (CLI, Library, Web, Monorepo)
+│           ├── archetypes.md        # Layout standards (CLI, Library, Web, ML, Embedded)
 │           ├── automation.md        # CI/CD, Dependabot, Release Please & Issue/PR templates
 │           ├── diagrams.md          # Technical Mermaid diagram standards & anti-slop rules
+│           ├── i18n.md              # Multi-lingual documentation anti-slop guidelines
 │           ├── licensing.md         # Open-source legal triage & dependency compatibility matrix
 │           └── slop-test.md         # 6-point pre-emit audit scorecard
 ├── install.ps1                      # Windows PowerShell / CMD installer
 ├── install.sh                       # Portable POSIX shell installer
 ├── docs/
 │   ├── recipes.md                   # Advanced recipes (CI actions, pre-commit, monorepos)
-│   └── screenshots/                 # Asset guidelines & banner assets
+│   ├── screenshots/                 # Asset guidelines & banner assets
+│   └── translations/                # Localized documentation mirrors
 ├── CHANGELOG.md                     # Semantic version release history
 ├── CONTRIBUTING.md                  # Contribution standards & Conventional Commits
 ├── SECURITY.md                      # Vulnerability disclosure policy
@@ -308,6 +328,7 @@ Yes. `well-document` follows the standard Agent Skills specification. Once publi
 - [Project Roadmap](ROADMAP.md)
 - [Release History (Changelog)](CHANGELOG.md)
 - [Advanced Recipes](docs/recipes.md)
+- [Turkish Translation (Türkçe)](docs/translations/README.tr.md)
 
 ---
 
