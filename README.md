@@ -243,6 +243,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 │   ├── dependabot.yml               # Automated weekly dependency updates
 │   └── workflows/
 │       ├── ci.yml                   # Continuous integration (syntax, governance, anti-slop)
+│       ├── owner-auto-merge.yml     # Automated squash merge for repository owner PRs
 │       └── release-please.yml       # Automated CHANGELOG & semantic versioning releases
 ├── .editorconfig                    # Universal IDE & editor formatting rules
 ├── .gitattributes                  # Git line-ending normalization & export filters

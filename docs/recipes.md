@@ -102,3 +102,33 @@ git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | while read -r f
   done
 done
 ```
+
+---
+
+## Recipe 5: Automated Owner PR Auto-Merge
+
+Eliminate manual merge clicks for maintainer pull requests by queueing them for automatic squash-merge once CI status checks pass:
+
+```yaml
+name: Owner Auto-Merge
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == github.repository_owner && !github.event.pull_request.draft
+    steps:
+      - name: Enable Auto-Merge for Owner PR
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+```

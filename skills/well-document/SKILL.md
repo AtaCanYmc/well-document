@@ -100,6 +100,7 @@ Generate only missing or requested files:
 - **`.github/workflows/ci.yml`** *(Conditional)*: Automated testing and validation pipeline tailored to detected runtimes (Python, Node.js, Rust, Go, or Shell/Markdown).
 - **`.github/dependabot.yml`** *(Conditional)*: Automated dependency update schedules when package manifests or CI workflows exist.
 - **`.github/workflows/release-please.yml`** *(Conditional)*: Automated CHANGELOG and semantic release tagging when Conventional Commits are followed.
+- **`.github/workflows/owner-auto-merge.yml`** *(Conditional)*: Automated squash-merge queue for repository owner pull requests once all required CI status checks pass.
 
 ### Step 3: Self-Critique & Pre-Emit Verification
 Score the generated documentation against the 6 gates in [`references/slop-test.md`](references/slop-test.md):

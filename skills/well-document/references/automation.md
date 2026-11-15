@@ -529,3 +529,41 @@ Add to `.github/workflows/ci.yml`:
           print("Internal documentation links verified.")
           '
 ```
+
+---
+
+## 12. Owner PR Auto-Merge (`.github/workflows/owner-auto-merge.yml`)
+
+For repositories where maintainers iterate via feature branches, manually merging personal pull requests after CI checks pass adds repetitive overhead.
+
+Scaffold `.github/workflows/owner-auto-merge.yml` to queue pull requests authored by the repository owner for automated squash-merging once all required CI checks pass:
+
+```yaml
+name: Owner Auto-Merge
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == github.repository_owner && !github.event.pull_request.draft
+    steps:
+      - name: Enable Auto-Merge for Owner PR
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+```
+
+### Technical Rules & Guardrails
+- **Status Checks Preserved**: The native GitHub auto-merge queue does not bypass tests or branch protections. Merging occurs only after all status checks succeed.
+- **Strict Identity Enforcement**: The guard `github.event.pull_request.user.login == github.repository_owner` ensures external contributor and third-party PRs are never auto-merged.
+- **Draft Safeguard**: Draft pull requests are ignored until explicitly marked ready for review.
+- **Repository Setting Prerequisite**: In GitHub repository **Settings** -> **General** -> **Pull Requests**, check **Allow auto-merge**. Under **Settings** -> **Actions** -> **General** -> **Workflow permissions**, verify **Allow GitHub Actions to create and approve pull requests** is enabled.
