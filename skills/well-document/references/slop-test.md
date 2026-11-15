@@ -13,7 +13,7 @@ Before committing or presenting generated documentation, audit the content again
 | **G3** | **Specificity** | Precision of language | Direct description of algorithms, protocols, inputs, and outputs. Crisp, period-separated sentences. | Buzzword salad ("revolutionary", "seamless", "blazingly fast", "robust"), run-on thought chaining. |
 | **G4** | **Grounding** | Codebase fidelity | File trees, package names, and modules correspond strictly to real files on disk. | Imaginary directories, hallucinated dependencies, fictional microservices. |
 | **G5** | **Honesty** | Claims & social proof | Real benchmark methodology or no performance claims at all. | Made-up stats ("trusted by thousands", "+90% productivity boost"). |
-| **G6** | **Governance** | Policies, license & contribution | Private security disclosure address, SLA, Conventional Commits, legally compatible license with real year & owner (zero bracket placeholders). | Blank security sections, incompatible license (e.g. MIT on GPL deps), bracket placeholders like `[year]` or `[fullname]`, vague rules. |
+| **G6** | **Governance** | Policies, license & contribution | Explicit user confirmation obtained prior to creating files; private security disclosure address, SLA, Conventional Commits, legally compatible license with real year & owner (zero bracket placeholders). | Unrequested file scaffolding without user consent; blank security sections, incompatible license (e.g. MIT on GPL deps), bracket placeholders like `[year]` or `[fullname]`, vague rules. |
 
 ---
 

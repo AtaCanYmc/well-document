@@ -46,7 +46,8 @@ AI-generated documentation is instantly recognizable by common tells: rocket emo
 13. **No Long Dashes & Minimal Parentheses**: Strictly avoid long dashes (`—` or `--`) to stitch fragmented thoughts together. Keep parenthetical explanations minimal or eliminated. Write direct, declarative sentences terminated with periods instead of whispering or hedging in parentheses. See [`references/anti-patterns.md`](references/anti-patterns.md).
 14. **Fast-Path Quick Start for Complex Setups**: When a repository contains multi-service topologies or container setups (e.g. `docker-compose.yml`, `Dockerfile`, `.devcontainer/`), the `README.md` must lead with a turnkey **Quick Start (Docker)** fast-path. Limit it to 3 or 4 actionable commands (`clone`, `cp .env.example .env`, `docker compose up -d`, `healthz check`). Never bury container commands beneath lengthy manual environment setup instructions.
 15. **Tabular Clarity for Structured Data**: When documenting environment variables (`.env`), CLI flags, configuration schemas, or runtime/feature compatibility matrices, always structure them in clean, compact Markdown tables with explicit column alignment. Never dump structured parameters as loose, unformatted bullet lists. See [`references/archetypes.md`](references/archetypes.md).
-16. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard (`references/slop-test.md`) before generating or saving any documentation file.
+16. **User Confirmation Before Creation**: Never unilaterally scaffold or dump unrequested documentation files into a repository. In `well-document init` or when proposing governance assets, scan the codebase, present the itemized checklist of candidate files with a one-sentence technical rationale for each, and explicitly ask the user which documents are needed. Only generate files the user explicitly approves.
+17. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard (`references/slop-test.md`) before generating or saving any documentation file.
 
 ---
 
@@ -60,10 +61,11 @@ flowchart TD
     D --> E["Emit Ranked Punch List"]
     C -->|"init"| F["Detect Ecosystem & Manifests"]
     F --> G["Select Repository Archetype & License"]
-    G --> H["Scaffold Missing Governance & Automation Files"]
-    C -->|"polish"| I["Strip Slop & Tighten Technical Copy"]
-    H & I --> J["Run Pre-Emit Slop Test"]
-    J --> K["Commit / Present Clean Artifacts"]
+    G --> H["Propose Candidate Files & Ask User Confirmation"]
+    H --> I["Scaffold Approved Governance & Automation Files"]
+    C -->|"polish"| J["Strip Slop & Tighten Technical Copy"]
+    I & J --> K["Run Pre-Emit Slop Test"]
+    K --> L["Commit / Present Clean Artifacts"]
 ```
 
 ### Step 0: Pre-Flight Inspection & Legal Triage
@@ -82,8 +84,13 @@ Choose the structure matching the codebase's true nature (see [`references/arche
 - **Service / Web App**: Local setup, environment configuration, database migrations, container execution.
 - **Monorepo / Multi-Package**: Workspace topologies, shared packages, independent package manifests.
 
-### Step 2: Assemble Governance & Automation Files
-Generate only missing or requested files:
+### Step 2: Propose & Assemble Governance & Automation Files
+Before writing any file to disk:
+1. Present the itemized list of candidate files (e.g. `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `ROADMAP.md`, CI workflows, issue templates) with a one-sentence technical rationale for each.
+2. Ask the user for explicit confirmation: *"Here are the recommended documentation and governance files for your project. Which of these would you like to create?"*
+3. Generate only the approved files. Never scaffold files the user declined or did not request.
+
+Approved files to assemble based on user selection:
 - **`README.md`**: Minimalist banner/badge header (with CI status badge), single-sentence technical definition, **hyperlinked Table of Contents**, **turnkey Quick Start (featuring Docker fast-path when container manifests exist)**, architecture tree (with Mermaid where relevant), verifiable examples, and a conditional high-signal FAQ section when warranted.
 - **Scoped Subfolder `README.md`** *(Conditional)*: Independent README files inside modular sub-packages (`packages/*`, `apps/*`, `crates/*`, `skills/*`) with localized Quick Start, API exports, and a `[← Back to Root Repository]` link.
 - **`.gitignore`**: Complete ignore rules for the detected runtime(s), IDEs, OS metadata, and secret files (`.env`).

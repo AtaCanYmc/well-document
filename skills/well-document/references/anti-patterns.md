@@ -99,3 +99,16 @@ This creates hesitant, fragmented prose that reads like an LLM hedging its asser
 
 **Good Example**:
 > *The daemon runs in user space. It buffers up to 10,000 events in memory before committing to disk to preserve throughput during disk latency spikes.*
+
+---
+
+## 8. Unprompted File Dumping (Boilerplate Spam)
+
+### The Anti-Pattern
+An AI coding assistant unilaterally generates 8 different governance files (`SECURITY.md`, `ROADMAP.md`, `CONTRIBUTING.md`, issue templates, CI files) without confirming whether the repository needs them. This clutters lightweight scripts and minimal projects with unneeded administrative overhead.
+
+### The Fix
+Always confirm first. Present an itemized list of candidate files with a one-sentence technical rationale for each, and ask the developer:
+> *"Here are the recommended documentation and governance files for this repository. Which of these would you like to create?"*
+
+Only generate the files the developer explicitly approves.

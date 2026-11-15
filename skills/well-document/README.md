@@ -40,7 +40,7 @@ skills/well-document/
 ## Agent Loading & Invocations
 
 When loaded into an AI coding assistant, the skill activates the following primary verbs:
-- `well-document init`: Scans the repository and generates missing governance, documentation, and automation files.
+- `well-document init`: Scans the repository, proposes candidate governance and documentation files, requests user confirmation, and scaffolds only approved files.
 - `well-document audit`: Evaluates existing documentation against the 6 evaluation gates without modifying files.
 - `well-document polish <file>`: Rewrites a specific file to strip buzzword salad, emoji vomit, and unverified commands.
 - `well-document recipes`: Outputs advanced CI and pre-commit automation recipes.

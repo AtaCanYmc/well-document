@@ -54,6 +54,7 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
   - **Web / Backend Service**: Docker, environment variables (`.env.example`), migrations, endpoints.
   - **Monorepo**: Workspace mappings, topological build commands.
 - **Governance Standards**: Implements private security vulnerability disclosure protocols (48h response SLA) and Conventional Commits enforcement.
+- **User-Confirmed Scaffolding**: Never unilaterally dumps unwanted files into a repository. Itemizes candidate governance documents and requests explicit user approval before writing anything to disk.
 
 ---
 
@@ -210,7 +211,7 @@ Once installed, invoke `well-document` within your AI coding assistant prompt:
 
 > **Prompt:** `"well-document init"`
 
-The agent inspects your project manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, etc.), identifies the project archetype, and generates:
+The agent inspects your project manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, etc.), identifies the project archetype, presents candidate documentation files with rationale, requests your confirmation, and scaffolds only approved assets:
 - Clean, archetype-specific `README.md`
 - Comprehensive `.gitignore` matching your exact runtime
 - `SECURITY.md` with structured vulnerability reporting
