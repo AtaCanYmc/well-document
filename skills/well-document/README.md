@@ -50,7 +50,7 @@ When loaded into an AI coding assistant, the skill activates the following prima
 ## Reference Index
 
 - [`references/anti-patterns.md`](references/anti-patterns.md): Banned buzzwords, emoji rules, and hallucination preventions.
-- [`references/archetypes.md`](references/archetypes.md): Document order for libraries, CLIs, web apps, monorepos, and subfolders.
+- [`references/archetypes.md`](references/archetypes.md): Layout standards for CLI, Library, Web, Monorepos, Subfolders, Machine Learning, and Embedded Systems.
 - [`references/automation.md`](references/automation.md): GitHub Actions CI matrices, Dependabot, Release Please, Reusable Governance Gate, Issue/PR templates, and Pre-Commit hooks.
 - [`references/diagrams.md`](references/diagrams.md): Clean Mermaid flowchart, sequence, and state diagrams.
 - [`references/licensing.md`](references/licensing.md): Copyleft infection triage and license compatibility.

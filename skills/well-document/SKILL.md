@@ -83,6 +83,8 @@ Choose the structure matching the codebase's true nature (see [`references/arche
 - **CLI Utility**: Command-line usage, flags, shell completion, zero-dependency execution.
 - **Service / Web App**: Local setup, environment configuration, database migrations, container execution.
 - **Monorepo / Multi-Package**: Workspace topologies, shared packages, independent package manifests.
+- **Machine Learning / AI**: Model cards, dataset checksums, training/eval pipelines, VRAM requirements, Weights & Biases telemetry.
+- **Hardware & Embedded**: Microcontroller specs, pinout tables, memory maps, toolchains, schematics, and flashing instructions.
 
 ### Step 2: Propose & Assemble Governance & Automation Files
 Before writing any file to disk:

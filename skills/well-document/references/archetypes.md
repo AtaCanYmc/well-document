@@ -142,6 +142,80 @@ pnpm add @scope/subpackage
 
 ---
 
+## 6. Machine Learning & AI Repository Archetype
+
+Ideal for model training repositories, fine-tuning scripts, model checkpoints, and evaluation suites (PyTorch, JAX, HuggingFace Transformers, vLLM).
+
+### Section Order
+1. **Header**: Model/pipeline purpose, architecture, parameter count, license (OpenRAIL/MIT/Apache-2.0).
+2. **Table of Contents**: Hyperlinked section navigation.
+3. **Model Card Summary**: Architecture, context length, parameter precision (FP16, BF16, INT8, INT4), supported tasks.
+4. **Hardware & Runtime Requirements**: Minimum VRAM, CUDA/ROCm versions, disk requirements for weights.
+5. **Quick Start (Inference)**: 10-line verbatim Python inference example (loading weights and tokenizer).
+6. **Dataset Specifications & Integrity**: Splits (train/val/test), preprocessing instructions, and SHA-256 checksums table.
+7. **Training & Fine-Tuning Pipeline**: Verbatim bash commands for single-GPU, DDP, or DeepSpeed runs.
+8. **Telemetry & Experiment Tracking (W&B / MLflow)**: Configuration parameters, run naming, and offline logging flags.
+9. **Evaluation Benchmarks**: Verifiable metric scorecard table (accuracy, perplexity, throughput tokens/sec) with reproduction scripts.
+
+### Model Card Specification Table
+| Parameter | Value | Description |
+| :--- | :--- | :--- |
+| Architecture | Decoder-only Transformer | Base model topology |
+| Parameters | 7.2B (Active: 7.2B) | Total trainable weights |
+| Precision | BF16 / FP16 | Native training precision |
+| Context Window | 8,192 tokens | Maximum sequence length |
+| Target Hardware | NVIDIA Ampere+ (>= 16GB VRAM) | Recommended inference hardware |
+
+### Dataset Manifest & Checksums Table
+| Dataset Split | Samples | Size | SHA-256 Checksum | Source |
+| :--- | :--- | :--- | :--- | :--- |
+| `train.parquet` | 1,200,000 | 4.2 GB | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | Internal curated |
+| `validation.parquet` | 50,000 | 180 MB | `ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb` | Benchmark split |
+
+### Experiment Tracking Table (Weights & Biases / MLflow)
+| Parameter | Env Variable / Flag | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `project` | `WANDB_PROJECT` | `transformer-finetune` | Target W&B project dashboard |
+| `entity` | `WANDB_ENTITY` | `team-ml` | Organizational workspace |
+| `mode` | `WANDB_MODE` | `online` | Set `offline` for air-gapped clusters |
+| `tags` | `--wandb-tags` | `baseline,bf16` | Comma-delimited experiment tags |
+
+---
+
+## 7. Hardware & Embedded Systems Archetype
+
+Ideal for firmware repositories, bare-metal microcontrollers (STM32, ESP32, RP2040, Nordic nRF), FPGA designs, and robotics platforms (RTOS, embedded Rust, C/C++).
+
+### Section Order
+1. **Header**: Target hardware platform, core microcontroller architecture, firmware version.
+2. **Table of Contents**: Hyperlinked section navigation.
+3. **Hardware Specifications**: MCU, core clock speed, Flash, SRAM, operating voltage, peripheral bus clocking.
+4. **Pinout & Peripheral Mapping**: Aligned tabular mapping of physical pins, alternate functions, bus interfaces, and connected peripherals.
+5. **Memory Map & Partition Layout**: Flash sectors, SRAM regions, bootloader offsets, application partitions, and OTA slots.
+6. **Toolchain & Prerequisites**: Required compilers (`arm-none-eabi-gcc`, `rustup target add`, `clang`), flashing probes (`probe-rs`, `openocd`, `esptool`, `J-Link`).
+7. **Build & Flash Instructions**: Turnkey terminal commands to compile, flash over SWD/JTAG/UART, and attach serial monitor.
+8. **Power & Environmental Constraints**: Input voltage limits, sleep/active power draw, thermal bounds.
+9. **Schematics & PCB Artifacts**: Hardware revision history, KiCad/Gerber file links, and Bill of Materials (BOM) references.
+
+### Pinout & Peripheral Mapping Table
+| Pin | Alternate Function | Protocol / Signal | Connected Hardware | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| `PA9` | `USART1_TX` | UART TX (115200 8N1) | Debug USB bridge | Console telemetry |
+| `PA10` | `USART1_RX` | UART RX (115200 8N1) | Debug USB bridge | Command receiver |
+| `PB6` | `I2C1_SCL` | I2C Clock (400 kHz) | BME280 Sensor | 4.7k pull-up installed |
+| `PB7` | `I2C1_SDA` | I2C Data (400 kHz) | BME280 Sensor | 4.7k pull-up installed |
+| `PC13` | `GPIO_Output` | Active-Low LED | Status LED | Heartbeat indicator |
+
+### Flash & Memory Partition Layout Table
+| Region | Start Address | End Address | Size | Access | Purpose |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Bootloader | `0x08000000` | `0x08007FFF` | 32 KB | Read-Only | First-stage bootloader |
+| Config Storage | `0x08008000` | `0x0800FFFF` | 32 KB | Read/Write | Non-volatile flash parameters |
+| Application (Slot A) | `0x08010000` | `0x0807FFFF` | 448 KB | Read-Only | Active firmware binary |
+| Application (Slot B) | `0x08080000` | `0x080EFFFF` | 448 KB | Read-Only | OTA staged firmware binary |
+
+---
+
 ## Conditional Section: Frequently Asked Questions (FAQ)
 
 Not every repository needs an FAQ. Include an FAQ section **only** when the project meets at least two of the following conditions:
@@ -179,10 +253,10 @@ Always ground this table in actual keys found in `.env.example` or configuration
 
 | Variable | Type | Default | Required | Description |
 | :--- | :--- | :--- | :---: | :--- |
-| `DATABASE_URL` | String (URI) | — | Yes | PostgreSQL connection URI. |
+| `DATABASE_URL` | String (URI) | None | Yes | PostgreSQL connection URI. |
 | `PORT` | Integer | `8080` | No | Ingress HTTP listener port. |
 | `LOG_LEVEL` | Enum (`debug`, `info`, `warn`) | `info` | No | Logging verbosity filter. |
-| `JWT_SECRET` | String (Base64) | — | Yes | Secret used to sign session tokens. |
+| `JWT_SECRET` | String (Base64) | None | Yes | Secret used to sign session tokens. |
 
 ### 2. CLI Options & Flags Schema
 Use for command-line utilities and developer tools:
@@ -190,7 +264,7 @@ Use for command-line utilities and developer tools:
 | Option / Flag | Short | Type | Default | Description |
 | :--- | :---: | :--- | :--- | :--- |
 | `--target` | `-t` | Path | `.` | Target repository directory to inspect. |
-| `--dry-run` | — | Boolean | `false` | Preview operations without writing to disk. |
+| `--dry-run` | `-d` | Boolean | `false` | Preview operations without writing to disk. |
 | `--force` | `-f` | Boolean | `false` | Overwrite existing governance files. |
 
 ### 3. Feature & Platform Compatibility Matrix

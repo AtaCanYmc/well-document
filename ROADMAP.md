@@ -36,9 +36,9 @@ This roadmap outlines the planned development phases, feature releases, and arch
 
 ---
 
-## Phase 4: Ecosystem Expansion & Multi-Language Adapters (v2.0.0) - Planned
+## Phase 4: Ecosystem Expansion & Multi-Language Adapters (v2.0.0)
 
-- [ ] Specialized archetypes for Machine Learning repositories (Model cards, Weights & Biases configs, dataset checksums).
-- [ ] Hardware & Embedded Systems archetype (schematics, pinouts, memory maps).
+- [x] Specialized archetypes for Machine Learning repositories (Model cards, Weights & Biases configs, dataset checksums).
+- [x] Hardware & Embedded Systems archetype (schematics, pinouts, memory maps).
 - [ ] Interactive terminal preview mode for local inspection before emission.
 - [ ] Multi-lingual documentation synchronizer (strictly audited against machine translation slop).

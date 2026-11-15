@@ -53,6 +53,8 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
   - **Library / SDK**: API surface, typed import snippets, runtime matrices.
   - **Web / Backend Service**: Docker, environment variables (`.env.example`), migrations, endpoints.
   - **Monorepo**: Workspace mappings, topological build commands.
+  - **Machine Learning / AI**: Model cards, dataset manifests with SHA-256 checksums, VRAM requirements, W&B configs.
+  - **Hardware & Embedded**: Microcontroller pinouts, Flash and SRAM memory maps, toolchains, schematics, flashing.
 - **Governance Standards**: Implements private security vulnerability disclosure protocols (48h response SLA) and Conventional Commits enforcement.
 - **User-Confirmed Scaffolding**: Never unilaterally dumps unwanted files into a repository. Itemizes candidate governance documents and requests explicit user approval before writing anything to disk.
 
