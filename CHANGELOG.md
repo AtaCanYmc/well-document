@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/AtaCanYmc/well-document/compare/v1.3.0...v1.4.0) (2026-11-15)
+
+
+### Features
+
+* **archetypes:** add machine learning and embedded systems repository archetypes ([889eca0](https://github.com/AtaCanYmc/well-document/commit/889eca01de2caef367bc9efe507cfed0e9e9290a))
+* **ci:** add reusable governance gate workflow and pre-commit hook integration ([12801c6](https://github.com/AtaCanYmc/well-document/commit/12801c6f576f4cbab3ccacfd4da7cd80672da5d5))
+* **cli:** add interactive terminal preview and multilingual i18n synchronization tools ([ab5379f](https://github.com/AtaCanYmc/well-document/commit/ab5379fb639768e26371d7fd53c8ea52b41eb939))
+* **governance:** enforce user confirmation before scaffolding documentation files ([a573a94](https://github.com/AtaCanYmc/well-document/commit/a573a946b74f3614748f83fbbe2497b6d64d0053))
+* **plugins:** add Claude Code, Cursor, and Antigravity plugin manifests ([ca98b78](https://github.com/AtaCanYmc/well-document/commit/ca98b7861af40667c85d8fc3d8f58893eb134f7b))
+* **workflows:** add owner PR auto-merge workflow and skill documentation ([bdf9a78](https://github.com/AtaCanYmc/well-document/commit/bdf9a786ed059ec7aee3275e68ff0eccd62d04cd))
+
 ## [1.3.0](https://github.com/AtaCanYmc/well-document/compare/v1.2.0...v1.3.0) (2026-11-14)
 
 
