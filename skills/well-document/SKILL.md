@@ -1,7 +1,7 @@
 ---
 name: well-document
 description: "Anti-AI-slop repository governance and documentation skill for AI coding assistants. Audits, structures, and generates professional, production-grade GitHub repository files (README, CONTRIBUTING, SECURITY, LICENSE, ROADMAP, recipes) with zero buzzword filler."
-version: 1.0.0
+version: 1.3.0
 ---
 
 # well-document

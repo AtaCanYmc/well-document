@@ -30,7 +30,7 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 - [Technical Specifications](#technical-specifications)
 - [Installation](#installation)
   - [Agent Compatibility Matrix](#agent-compatibility-matrix)
-  - [Option 1: Skills CLI (Recommended)](#option-1-skills-cli-npx-skills-add-recommended)
+  - [Option 1: Skills CLI (Recommended)](#option-1-skills-cli-recommended)
   - [Option 2: One-Line POSIX Installer](#option-2-one-line-posix-installer-macos--linux)
   - [Option 3: PowerShell Installer (Windows)](#option-3-powershell-installer-windows-powershell--cmd)
   - [Option 4: Manual Configuration](#option-4-manual-agent-configuration)
@@ -72,7 +72,7 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 
 ---
 
-### Option 1: Skills CLI (`npx skills add` - Recommended)
+### Option 1: Skills CLI (Recommended)
 
 The standard, package-managed way to install AI agent skills across Cursor, Claude Code, Antigravity, and Codex:
 
@@ -250,6 +250,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 ├── .editorconfig                    # Universal IDE & editor formatting rules
 ├── .gitattributes                  # Git line-ending normalization & export filters
 ├── .markdownlint.json               # Markdown lint rules (relaxed for tables, Mermaid & HTML)
+├── package.json                     # Skills CLI & npm package manifest
 ├── plugin.json                      # Google Antigravity & Gemini CLI plugin manifest
 ├── skills/
 │   └── well-document/
@@ -267,6 +268,7 @@ Strips out rocket emojis, marketing copy, and unexecutable instructions, replaci
 ├── docs/
 │   ├── recipes.md                   # Advanced recipes (CI actions, pre-commit, monorepos)
 │   └── screenshots/                 # Asset guidelines & banner assets
+├── CHANGELOG.md                     # Semantic version release history
 ├── CONTRIBUTING.md                  # Contribution standards & Conventional Commits
 ├── SECURITY.md                      # Vulnerability disclosure policy
 ├── ROADMAP.md                       # Version milestones
@@ -296,6 +298,7 @@ Yes. `well-document` follows the standard Agent Skills specification. Once publi
 - [Contributing Guidelines](CONTRIBUTING.md)
 - [Security Policy](SECURITY.md)
 - [Project Roadmap](ROADMAP.md)
+- [Release History (Changelog)](CHANGELOG.md)
 - [Advanced Recipes](docs/recipes.md)
 
 ---

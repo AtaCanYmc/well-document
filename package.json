@@ -1,6 +1,6 @@
 {
   "name": "well-document",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "Anti-AI-slop repository governance and documentation skill for AI coding assistants.",
   "repository": {
     "type": "git",

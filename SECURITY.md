@@ -8,10 +8,10 @@ The `well-document` project maintains strict security standards for all codebase
 
 Security fixes and patches are provided exclusively for active releases. Older versions are deprecated and unsupported.
 
-| Version | Supported          | Security Advisory Status       |
-| ------- | ------------------ | ------------------------------ |
-| 1.x     | :white_check_mark: | Active support & triage        |
-| < 1.0.0 | :x:                | Deprecated                     |
+| Version | Supported | Security Advisory Status |
+| :--- | :--- | :--- |
+| 1.x | Supported | Active support & triage |
+| < 1.0.0 | Unsupported | Deprecated |
 
 ---
 
@@ -23,8 +23,8 @@ If you discover a security vulnerability or suspect a security flaw in `well-doc
 
 Please submit your report through one of the following private channels:
 
-- **Email**: Send encrypted reports to `security@example.com`.
-- **GitHub Private Vulnerability Reporting**: Use the **Report a vulnerability** tab under GitHub Security Advisories.
+- **Email**: Send encrypted reports to `atacanymc@gmail.com`.
+- **GitHub Private Vulnerability Reporting**: Submit a report directly via [GitHub Security Advisories](https://github.com/AtaCanYmc/well-document/security/advisories/new).
 
 ### What to Include in Your Report
 
