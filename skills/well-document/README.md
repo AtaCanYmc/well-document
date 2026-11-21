@@ -17,7 +17,7 @@ This directory contains the primary AI agent skill definition and reference know
 
 ## Overview
 
-The `skills/well-document/` directory is packaged to be mounted directly into AI coding assistant skill inventories (Google Antigravity, Gemini CLI, Claude Code, Cursor, Windsurf, and Codex). It provides deterministic anti-AI-slop instructions and evaluation scorecards.
+The `skills/well-document/` directory is packaged to be mounted directly into AI coding assistant skill inventories (Google Antigravity, Gemini CLI, Claude Code, Cursor, Windsurf, and Codex). It provides structured anti-AI-slop prompt instructions and evaluation scorecards. Deterministic verification and preview tooling lives in the root [`scripts/`](../../scripts/) directory (`verify-anti-slop.py`, `verify-grounding.py`, `preview.py`, `sync-i18n.py`).
 
 ---
 
@@ -25,6 +25,7 @@ The `skills/well-document/` directory is packaged to be mounted directly into AI
 
 ```text
 skills/well-document/
+├── README.md                # Package overview, directory layout, and reference index
 ├── SKILL.md                 # Master skill prompt, verbs, and execution flow
 └── references/              # Specialized knowledge bases loaded on demand
     ├── anti-patterns.md     # Catalog of AI-slop documentation tells & remediations

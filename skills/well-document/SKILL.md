@@ -6,9 +6,9 @@ version: 1.3.0
 
 # well-document
 
-A repository governance and documentation skill for AI coding assistants. Turns raw, undocumented codebases into production-grade, open-source repositories that look engineered, not generated.
+A repository governance and documentation skill for AI coding assistants. Turns raw, undocumented codebases into clean, open-source repositories that look engineered, not generated.
 
-`well-document` is opinionated, technical, and anti-AI-slop. It systematically replaces generic boilerplate, emoji vomit, and marketing puffery with crisp technical architecture, real verification steps, and industry-standard governance.
+`well-document` is opinionated, technical, and anti-AI-slop. It systematically replaces generic boilerplate, emoji clutter, and marketing puffery with crisp technical architecture, real verification steps, and industry-standard governance.
 
 ---
 
@@ -17,13 +17,13 @@ A repository governance and documentation skill for AI coding assistants. Turns 
 `well-document` operates through explicit modular verbs:
 
 | Invocation | Action |
-| --- | --- |
-| `well-document init` *(default)* | Scans the codebase, detects language/runtime signatures, proposes candidate files, and scaffolds approved governance files. |
+| :--- | :--- |
+| `well-document init` *(default)* | Scans the codebase, detects language and runtime signatures, proposes candidate files, and scaffolds approved governance files. |
 | `well-document audit` | Inspects existing repository documentation against anti-AI-slop gates and returns a ranked punch list. **Makes no edits.** |
-| `well-document polish <file>` | Rewrites a single documentation file (`README.md`, `CONTRIBUTING.md`, etc.) to eliminate AI slop, prune filler adjectives, and inject technical precision. |
-| `well-document preview <file>` | Renders an interactive terminal preview of documentation with ANSI styling and a real-time 6-gate audit scorecard. |
+| `well-document polish <file>` | Rewrites a single documentation file to eliminate AI slop, prune filler adjectives, and inject technical precision while preserving valid human-written notes. |
+| `well-document preview <file>` | Runs the local terminal preview script to render ANSI-styled documentation with a real-time 6-gate audit scorecard. |
 | `well-document i18n <action>` | Scaffolds or audits multi-lingual documentation against translation drift, mangled code blocks, and localized marketing slop. |
-| `well-document recipes` | Emits battle-tested recipes for CI governance enforcement, multi-package monorepos, and release automation. |
+| `well-document recipes` | Outputs concrete automation recipes for CI governance gates, pre-commit hooks, multi-package monorepos, and release workflows. |
 
 ---
 
@@ -33,23 +33,25 @@ AI-generated documentation is instantly recognizable by common tells: rocket emo
 
 ### Non-Negotiable Rules
 
-1. **Zero Emoji Vomit**: Emojies are strictly banned from body copy. A single neutral icon may appear next to top-level section headers only if it serves functional visual parsing. Never use `:rocket:`, `:fire:`, `:sparkles:`, or `:tada:` in technical docs.
-2. **No Fabricated Metrics or Social Proof**: Never invent statistics (*"99.9% uptime"*, *"trusted by 10,000 developers"*). If benchmarks do not exist in the code, do not write a benchmark section. Use real reproduction commands instead.
-3. **No Fluff Adjectives**: Eliminate: *effortless, seamless, revolutionary, blazingly fast, cutting-edge, robust, comprehensive, ultimate, elegant*. State the technical mechanics plainly.
-4. **Actionable Quick Start**: Every code block in Quick Start must be copy-paste executable against the actual repository tree. If a command requires environment variables, name them explicitly with a `.env.example` reference.
-5. **Architectural Grounding**: Every directory listed in the file tree must actually exist in the repository. Never include speculative or generic directory trees.
-6. **Visual Architecture via Mermaid**: When explaining subsystem interactions, data flows, protocols, or state transitions, always embed concise, dark/light-compatible Mermaid diagrams (`flowchart`, `sequenceDiagram`, `stateDiagram-v2`). Never rely on external images that break on theme change or walls of text. See [`references/diagrams.md`](references/diagrams.md).
-7. **High-Signal Technical FAQ (Conditional)**: If the repository warrants it (e.g. tools with distinct trade-offs, telemetry/privacy questions, offline execution guarantees, or common alternative comparisons like "Why X instead of Y?"), include a technical FAQ section. Strictly forbid trivial filler questions ("Is this free?"). Every FAQ item must solve real developer doubts or explain design decisions.
-8. **Legal License Compatibility**: Never assign an incompatible permissive license if dependencies impose copyleft obligations (GPL/AGPL). Never emit unpopulated placeholders (`<YEAR>`, `[fullname]`). Follow the triage matrix in [`references/licensing.md`](references/licensing.md).
-9. **CI, Maintenance & Release Automation (Conditional)**: If the repository contains runnable tests, linters, or build scripts, scaffold `.github/workflows/ci.yml`. If it contains dependencies or actions, scaffold `.github/dependabot.yml`. If it adheres to Conventional Commits and publishes releases, scaffold `.github/workflows/release-please.yml`. Always embed the CI status badge in `README.md`. See [`references/automation.md`](references/automation.md).
-10. **Issue & Pull Request Governance**: Every production repository requires structured issue forms and pull request templates. Scaffold `.github/ISSUE_TEMPLATE/` with `config.yaml` (`blank_issues_enabled: false` and security redirects), `bug_report.yml`, and `feature_request.yml`. Scaffold `.github/PULL_REQUEST_TEMPLATE/pull_request_template.md` enforcing Conventional Commits and reproduction/verification commands. See [`references/automation.md`](references/automation.md).
-11. **Table of Contents (Navigation)**: Every generated `README.md` must feature a clean, hyperlinked Table of Contents placed immediately after the Overview/Badges block to guarantee rapid developer navigation across sections.
-12. **Scoped Subfolder READMEs (Workspaces & Modules)**: When a repository contains discrete sub-packages, independent workspaces, or major domain modules (e.g. `packages/*`, `apps/*`, `crates/*`, `skills/*`), scaffold dedicated, focused `README.md` files within those subfolders. Each sub-README must strictly adhere to the same anti-AI-slop rules, document only that module's specific scope and API, and include a top navigation breadcrumb (`[← Back to Root Repository](../../README.md)`).
-13. **No Long Dashes & Minimal Parentheses**: Strictly avoid long dashes (`—` or `--`) to stitch fragmented thoughts together. Keep parenthetical explanations minimal or eliminated. Write direct, declarative sentences terminated with periods instead of whispering or hedging in parentheses. See [`references/anti-patterns.md`](references/anti-patterns.md).
-14. **Fast-Path Quick Start for Complex Setups**: When a repository contains multi-service topologies or container setups (e.g. `docker-compose.yml`, `Dockerfile`, `.devcontainer/`), the `README.md` must lead with a turnkey **Quick Start (Docker)** fast-path. Limit it to 3 or 4 actionable commands (`clone`, `cp .env.example .env`, `docker compose up -d`, `healthz check`). Never bury container commands beneath lengthy manual environment setup instructions.
-15. **Tabular Clarity for Structured Data**: When documenting environment variables (`.env`), CLI flags, configuration schemas, or runtime/feature compatibility matrices, always structure them in clean, compact Markdown tables with explicit column alignment. Never dump structured parameters as loose, unformatted bullet lists. See [`references/archetypes.md`](references/archetypes.md).
-16. **User Confirmation Before Creation**: Never unilaterally scaffold or dump unrequested documentation files into a repository. In `well-document init` or when proposing governance assets, scan the codebase, present the itemized checklist of candidate files with a one-sentence technical rationale for each, and explicitly ask the user which documents are needed. Only generate files the user explicitly approves.
-17. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard (`references/slop-test.md`) before generating or saving any documentation file.
+1. **Zero Emoji Vomit**: Emojis are strictly banned from body copy. A single neutral icon may appear next to top-level section headers only if it serves functional visual parsing. Never use `:rocket:`, `:fire:`, `:sparkles:`, or `:tada:` in technical docs.
+2. **No Fabricated Metrics or Social Proof**: Never invent statistics such as *"99.9% uptime"* or *"trusted by 10,000 developers"*. If benchmarks do not exist in the code, omit the benchmark section and provide reproduction commands instead.
+3. **No Fluff Adjectives**: Eliminate *effortless, seamless, revolutionary, blazingly fast, cutting-edge, robust, comprehensive, ultimate, elegant, battle-tested*. State the technical mechanics plainly.
+4. **Actionable Quick Start**: Every code block in Quick Start must be copy-paste executable against the actual repository tree. If a command requires environment variables, name them explicitly and reference `.env.example`.
+5. **Architectural Grounding**: Every directory listed in the file tree must physically exist in the repository. Never emit speculative or generic directory trees.
+6. **Secret & Credential Hygiene**: Never copy real API keys, tokens, passwords, private endpoints, or internal IP addresses from local `.env` or config files into documentation or `.env.example`. Always emit sanitized placeholder values.
+7. **Content Preservation**: When running `init` or `polish` on existing documentation, preserve valid human-written architectural decisions, domain warnings, and custom licensing notes. Strip only slop, broken references, and unverified claims.
+8. **Visual Architecture via Mermaid**: When explaining subsystem interactions, data flows, protocols, or state transitions, embed concise, dark/light-compatible Mermaid diagrams using `flowchart`, `sequenceDiagram`, or `stateDiagram-v2`. See [`references/diagrams.md`](references/diagrams.md).
+9. **High-Signal Technical FAQ**: Include a technical FAQ section only when the repository has distinct trade-offs, privacy guarantees, offline execution rules, or alternative comparisons. Forbid trivial filler questions such as *"Is this free?"*.
+10. **Legal License Compatibility**: Never assign an incompatible permissive license if dependencies impose copyleft obligations like GPL or AGPL. Never emit unpopulated placeholders such as `<YEAR>` or `[fullname]`. Follow [`references/licensing.md`](references/licensing.md).
+11. **CI, Maintenance & Release Automation**: Scaffold `.github/workflows/ci.yml` when runnable tests, linters, or build scripts exist. Scaffold `.github/dependabot.yml` when dependencies or actions exist. Scaffold `.github/workflows/release-please.yml` when Conventional Commits and versioned releases are used. Embed the CI status badge in `README.md`. See [`references/automation.md`](references/automation.md).
+12. **Issue & Pull Request Governance**: For production repositories, scaffold `.github/ISSUE_TEMPLATE/` containing `config.yaml` with `blank_issues_enabled: false` and security redirects, `bug_report.yml`, and `feature_request.yml`. Scaffold `.github/PULL_REQUEST_TEMPLATE/pull_request_template.md` enforcing Conventional Commits and verification commands. See [`references/automation.md`](references/automation.md).
+13. **Conditional Table of Contents**: Include a hyperlinked Table of Contents immediately after the Overview block when `README.md` contains 5 or more top-level sections. Omit it on short, single-purpose repositories to avoid vertical bloat.
+14. **Scoped Subfolder READMEs**: When a repository contains discrete sub-packages, independent workspaces, or major domain modules such as `packages/*`, `apps/*`, `crates/*`, or `skills/*`, scaffold dedicated `README.md` files inside those subfolders. Each sub-README must document only that module's scope and include a top navigation link back to the root repository.
+15. **No Long Dashes & Minimal Parentheses**: Avoid long dashes (`—` or `--`) to stitch fragmented thoughts together. Keep parenthetical explanations minimal. Write direct, declarative sentences terminated with periods. See [`references/anti-patterns.md`](references/anti-patterns.md).
+16. **Fast-Path Quick Start for Containers**: When `docker-compose.yml`, `Dockerfile`, or `.devcontainer/` exists, lead `README.md` with a turnkey **Quick Start (Docker)** section limited to 3 or 4 executable commands. Never bury container commands beneath lengthy manual setup steps.
+17. **Tabular Clarity for Structured Data**: Document environment variables, CLI flags, configuration schemas, and compatibility matrices in compact Markdown tables with explicit column alignment. See [`references/archetypes.md`](references/archetypes.md).
+18. **User Confirmation Before Creation**: Never unilaterally scaffold unrequested files. Present an itemized checklist of candidate files with a one-sentence technical rationale for each, and generate only the files the user explicitly approves.
+19. **Pre-Emit Slop Gate**: Run the 6-point verification scorecard in [`references/slop-test.md`](references/slop-test.md) before emitting or saving any documentation file.
 
 ---
 
@@ -57,69 +59,80 @@ AI-generated documentation is instantly recognizable by common tells: rocket emo
 
 ```mermaid
 flowchart TD
-    A["Trigger: well-document"] --> B["Pre-Flight Inspection & License Triage"]
+    A["Trigger: well-document"] --> B["Pre-Flight Inspection"]
     B --> C{"Command Route"}
     C -->|"audit"| D["Evaluate against Slop Gates"]
     D --> E["Emit Ranked Punch List"]
-    C -->|"init"| F["Detect Ecosystem & Manifests"]
-    F --> G["Select Repository Archetype & License"]
-    G --> H["Propose Candidate Files & Ask User Confirmation"]
-    H --> I["Scaffold Approved Governance & Automation Files"]
-    C -->|"polish"| J["Strip Slop & Tighten Technical Copy"]
-    I & J --> K["Run Pre-Emit Slop Test"]
-    K --> L["Commit / Present Clean Artifacts"]
+    C -->|"init"| F["Detect Ecosystem, Archetype & License"]
+    F --> G["Propose Candidate Files & Ask Confirmation"]
+    G --> H["Scaffold Approved Files"]
+    C -->|"polish"| I["Strip Slop & Preserve Valid Notes"]
+    C -->|"preview"| J["Run scripts/preview.py"]
+    C -->|"i18n"| K["Load references/i18n.md & Run scripts/sync-i18n.py"]
+    C -->|"recipes"| L["Load references/automation.md & Emit Recipes"]
+    H & I & K --> M["Run Pre-Emit Slop Test"]
+    M --> N["Present Clean Artifacts"]
 ```
 
 ### Step 0: Pre-Flight Inspection & Legal Triage
-Before writing a single word, read the target repository:
-- **Language / Runtime**: Detect package manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `pom.xml`).
-- **Existing Governance**: Check for `LICENSE`, `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.gitignore`.
-- **Public API / Entry Point**: Identify the primary CLI command, importable library modules, or main entry points.
-- **Infrastructure & Containers**: Detect `Dockerfile`, `docker-compose.yml`, or `.devcontainer/` to check if a turnkey Docker Quick Start is warranted.
-- **Sub-Packages & Workspaces**: Identify modular subdirectories (`packages/`, `apps/`, `crates/`, `skills/`) requiring scoped documentation.
-- **Upstream Licensing Triage**: Scan linked dependencies for copyleft (GPL/AGPL) constraints, determine project distribution model, and extract author/organization identity. See [`references/licensing.md`](references/licensing.md).
+
+Before writing or editing any file, inspect the target repository:
+
+- **Language & Runtime**: Detect package manifests including `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, and `pom.xml`.
+- **Existing Governance**: Check for `LICENSE`, `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `.gitignore`.
+- **Public API & Entry Point**: Identify primary CLI commands, importable modules, or main entry points.
+- **Infrastructure & Containers**: Detect `Dockerfile`, `docker-compose.yml`, or `.devcontainer/` to determine if a Docker Quick Start is warranted.
+- **Sub-Packages & Workspaces**: Identify modular subdirectories such as `packages/`, `apps/`, `crates/`, or `skills/` requiring scoped documentation.
+- **Upstream Licensing Triage**: Scan dependencies for copyleft constraints, determine the distribution model, and extract the author or organization identity. See [`references/licensing.md`](references/licensing.md).
 
 ### Step 1: Select Repository Archetype
-Choose the structure matching the codebase's true nature (see [`references/archetypes.md`](references/archetypes.md)):
+
+Choose the structure matching the codebase's true interface in [`references/archetypes.md`](references/archetypes.md):
+
 - **Library / SDK**: API surface, minimal dependencies, typed examples, package manager installation.
-- **CLI Utility**: Command-line usage, flags, shell completion, zero-dependency execution.
-- **Service / Web App**: Local setup, environment configuration, database migrations, container execution.
-- **Monorepo / Multi-Package**: Workspace topologies, shared packages, independent package manifests.
-- **Machine Learning / AI**: Model cards, dataset checksums, training/eval pipelines, VRAM requirements, Weights & Biases telemetry.
+- **CLI Utility**: Command-line usage, flags, subcommands, shell pipelines, configuration files.
+- **Service / Web App**: Local setup, environment table, database migrations, container execution.
+- **Monorepo / Multi-Package**: Workspace topologies, shared packages, topological build commands.
+- **Machine Learning / AI**: Model cards, dataset checksums, training and evaluation pipelines, VRAM requirements, experiment tracking.
 - **Hardware & Embedded**: Microcontroller specs, pinout tables, memory maps, toolchains, schematics, and flashing instructions.
 
-### Step 2: Propose & Assemble Governance & Automation Files
+### Step 2: Propose & Assemble Governance Files (`init`)
+
 Before writing any file to disk:
-1. Present the itemized list of candidate files (e.g. `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `ROADMAP.md`, CI workflows, issue templates) with a one-sentence technical rationale for each.
+
+1. Present an itemized list of candidate files with a one-sentence technical rationale for each.
 2. Ask the user for explicit confirmation: *"Here are the recommended documentation and governance files for your project. Which of these would you like to create?"*
-3. Generate only the approved files. Never scaffold files the user declined or did not request.
+3. Generate only the approved files.
 
-Approved files to assemble based on user selection:
-- **`README.md`**: Minimalist banner/badge header (with CI status badge), single-sentence technical definition, **hyperlinked Table of Contents**, **turnkey Quick Start (featuring Docker fast-path when container manifests exist)**, architecture tree (with Mermaid where relevant), verifiable examples, and a conditional high-signal FAQ section when warranted.
-- **Scoped Subfolder `README.md`** *(Conditional)*: Independent README files inside modular sub-packages (`packages/*`, `apps/*`, `crates/*`, `skills/*`) with localized Quick Start, API exports, and a `[← Back to Root Repository]` link.
-- **`.gitignore`**: Complete ignore rules for the detected runtime(s), IDEs, OS metadata, and secret files (`.env`).
-- **`.gitattributes`**: Cross-platform line ending normalization (`* text=auto eol=lf`, `*.sh text eol=lf`), binary asset protection, and clean release archive exclusions (`export-ignore`).
-- **`SECURITY.md`**: Active version support table, encrypted or private disclosure workflow, 48-hour response SLA.
-- **`CONTRIBUTING.md`**: Conventional Commits specification, branch naming, local test commands, PR verification checklist.
-- **`LICENSE`**: Legally compatible open-source license (MIT, Apache-2.0, MPL-2.0, AGPL-3.0) determined by dependency triage. Must include accurate current calendar year and extracted copyright owner with zero placeholder bracket residue.
-- **`ROADMAP.md`**: Real milestones categorized by version tags, avoiding speculative promises.
-- **`.markdownlint.json`**: Disciplined markdown lint configuration tuned for technical repositories (disables line-length limits on tables/diagrams, permits banner images and details elements, prevents heading hierarchy skips).
-- **`.editorconfig`**: Universal editor and IDE formatting rules (2-space indent for JSON/YAML/Markdown, 4-space for Python, LF endings, trailing whitespace cleanup).
-- **`.github/CODEOWNERS`**: Automated pull request review assignment for repository paths, security policies, and workflow manifests.
-- **`.github/ISSUE_TEMPLATE/`**: Structured issue forms (`bug_report.yml`, `feature_request.yml`) and `config.yaml` with `blank_issues_enabled: false` and security redirects.
-- **`.github/PULL_REQUEST_TEMPLATE/`**: Standard pull request template (`pull_request_template.md`) enforcing Conventional Commits, itemized changes, and explicit verification steps.
-- **`.github/workflows/ci.yml`** *(Conditional)*: Automated testing and validation pipeline tailored to detected runtimes (Python, Node.js, Rust, Go, or Shell/Markdown).
-- **`.github/workflows/well-document-gate.yml`** *(Conditional)*: Reusable GitHub Actions workflow enforcing anti-slop rules, governance file checks, and markdown link grounding.
-- **`.github/dependabot.yml`** *(Conditional)*: Automated dependency update schedules when package manifests or CI workflows exist.
-- **`.github/workflows/release-please.yml`** *(Conditional)*: Automated CHANGELOG and semantic release tagging when Conventional Commits are followed.
-- **`.github/workflows/owner-auto-merge.yml`** *(Conditional)*: Automated squash-merge queue for repository owner pull requests once all required CI status checks pass.
-- **`.pre-commit-hooks.yaml`** *(Conditional)*: Pre-commit framework hooks verifying relative link grounding and anti-slop constraints before commit.
+Standard candidate assets:
 
-### Step 3: Self-Critique & Pre-Emit Verification
-Score the generated documentation against the 6 gates in [`references/slop-test.md`](references/slop-test.md):
-1. **Verifiability**: Can the quick start be executed verbatim?
-2. **Brevity**: Are there unnecessary introductory paragraphs or cheerleading?
+- **`README.md`**: Minimalist header with CI badge, single-sentence technical definition, conditional Table of Contents, actionable Quick Start, grounded architecture tree, verifiable examples, and conditional FAQ.
+- **Scoped Subfolder `README.md`**: Independent module documentation with localized Quick Start, API surface, and root navigation breadcrumb.
+- **`.gitignore`**: Complete ignore rules for detected runtimes, IDEs, OS metadata, and secret files.
+- **`.gitattributes`**: Cross-platform LF normalization, binary asset protection, and release archive exclusions.
+- **`SECURITY.md`**: Active version support table, private disclosure workflow, and 48-hour response SLA.
+- **`CONTRIBUTING.md`**: Conventional Commits specification, branch naming, local test commands, and PR checklist.
+- **`LICENSE`**: Legally compatible open-source license with accurate calendar year and copyright owner.
+- **`ROADMAP.md`**: Concrete milestones grouped by version tags without speculative promises.
+- **`.markdownlint.json` & `.editorconfig`**: Disciplined Markdown linting and universal IDE formatting rules.
+- **`.github/CODEOWNERS`, `ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE/`**: Structured issue forms, PR templates, and review ownership.
+- **Automation Workflows**: Conditional `ci.yml`, `well-document-gate.yml`, `dependabot.yml`, `release-please.yml`, `owner-auto-merge.yml`, and `.pre-commit-hooks.yaml`.
+
+### Step 3: Auxiliary Command Routes (`preview`, `i18n`, `recipes`)
+
+Resolve bundled Python scripts relative to the skill installation directory if they do not exist in the target repository.
+
+- **`well-document preview <file>`**: Execute `python3 <skill-dir>/scripts/preview.py <file>` to render the terminal preview and 6-gate audit scorecard. If Python or the script is unavailable, run the 6-gate scorecard manually using [`references/slop-test.md`](references/slop-test.md).
+- **`well-document i18n <action>`**: Load [`references/i18n.md`](references/i18n.md) before translating or auditing. Run `python3 <skill-dir>/scripts/sync-i18n.py` to scaffold translation templates with verbatim code blocks or audit structural parity against the source file.
+- **`well-document recipes`**: Load [`references/automation.md`](references/automation.md) and emit copy-pasteable configurations for CI governance gates, pre-commit hooks, monorepo documentation layouts, or release automation tailored to the target repository.
+
+### Step 4: Self-Critique & Pre-Emit Verification
+
+Score all generated or modified documentation against the 6 gates in [`references/slop-test.md`](references/slop-test.md):
+
+1. **Verifiability**: Can the Quick Start be executed verbatim?
+2. **Brevity**: Are introductory paragraphs and cheerleading eliminated?
 3. **Restraint**: Is emoji usage zero or strictly minimal?
 4. **Accuracy**: Does the file tree match the real repository layout?
-5. **Security**: Are disclosure instructions private and explicit?
+5. **Security**: Are disclosure instructions private and free of leaked secrets?
 6. **Governance**: Are PR requirements and commit formats stated clearly?
