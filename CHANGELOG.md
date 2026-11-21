@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/AtaCanYmc/well-document/compare/v1.4.0...v1.4.1) (2026-11-21)
+
+
+### Bug Fixes
+
+* **skill:** add auxiliary command routing, dogfooding fixes, and script bundling in install.sh ([492400c](https://github.com/AtaCanYmc/well-document/commit/492400c9e15d86ffd1723f70ef29a75a31bdabeb))
+
 ## [1.4.0](https://github.com/AtaCanYmc/well-document/compare/v1.3.0...v1.4.0) (2026-11-15)
 
 
