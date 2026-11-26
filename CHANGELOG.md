@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/AtaCanYmc/well-document/compare/v1.4.1...v1.5.0) (2026-11-26)
+
+
+### Features
+
+* **skill:** add conditional Bruno and Postman API collection scaffolding with test assertions ([6420f8a](https://github.com/AtaCanYmc/well-document/commit/6420f8a3b6bfe5ad0a8c9d0f0362a28701dd4219))
+
 ## [1.4.1](https://github.com/AtaCanYmc/well-document/compare/v1.4.0...v1.4.1) (2026-11-21)
 
 
