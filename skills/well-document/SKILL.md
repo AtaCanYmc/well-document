@@ -81,6 +81,7 @@ Before writing or editing any file, inspect the target repository:
 - **Language & Runtime**: Detect package manifests including `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, and `pom.xml`.
 - **Existing Governance**: Check for `LICENSE`, `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `.gitignore`.
 - **Public API & Entry Point**: Identify primary CLI commands, importable modules, or main entry points.
+- **API & Backend Surface**: Detect HTTP routes, OpenAPI/Swagger specs, GraphQL schemas, or controller/router files to determine if Bruno or Postman collections are warranted.
 - **Infrastructure & Containers**: Detect `Dockerfile`, `docker-compose.yml`, or `.devcontainer/` to determine if a Docker Quick Start is warranted.
 - **Sub-Packages & Workspaces**: Identify modular subdirectories such as `packages/`, `apps/`, `crates/`, or `skills/` requiring scoped documentation.
 - **Upstream Licensing Triage**: Scan dependencies for copyleft constraints, determine the distribution model, and extract the author or organization identity. See [`references/licensing.md`](references/licensing.md).
@@ -116,6 +117,7 @@ Standard candidate assets:
 - **`ROADMAP.md`**: Concrete milestones grouped by version tags without speculative promises.
 - **`.markdownlint.json` & `.editorconfig`**: Disciplined Markdown linting and universal IDE formatting rules.
 - **`.github/CODEOWNERS`, `ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE/`**: Structured issue forms, PR templates, and review ownership.
+- **API Collections (`bruno/` or `postman/`)** *(Conditional)*: When backend or HTTP API endpoints exist, ask whether to scaffold a Bruno (`.bru`) or Postman (`*.postman_collection.json`) collection with sanitized environment variables (`{{baseUrl}}`, `{{apiKey}}`) and executable response assertions (status codes, required fields, error cases). See [`references/archetypes.md`](references/archetypes.md).
 - **Automation Workflows**: Conditional `ci.yml`, `well-document-gate.yml`, `dependabot.yml`, `release-please.yml`, `owner-auto-merge.yml`, and `.pre-commit-hooks.yaml`.
 
 ### Step 3: Auxiliary Command Routes (`preview`, `i18n`, `recipes`)

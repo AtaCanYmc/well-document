@@ -90,6 +90,15 @@ curl -f http://localhost:8080/healthz
 ```
 ```
 
+### Conditional API Collections (Bruno & Postman)
+
+When HTTP routes, REST/GraphQL handlers, or OpenAPI/Swagger specs are detected, ask the user during `well-document init` whether they want to scaffold an API collection (`bruno/`, `postman/`, both, or neither).
+
+- **Bruno (`bruno/`)**: Create `bruno/bruno.json`, `bruno/environments/local.bru`, and grouped `.bru` request files with `assert {}` or `tests {}` blocks.
+- **Postman (`postman/`)**: Create `postman/<project>.postman_collection.json` and `postman/local.postman_environment.json` with `pm.test(...)` verification scripts.
+- **Test Conditions**: Ground every request in real routes from the codebase. Include status code assertions, required response field/type checks, and auth or validation error cases.
+- **Secret Hygiene**: Never hardcode real tokens, passwords, or keys. Use environment placeholders such as `{{baseUrl}}` and `{{authToken}}`.
+
 ---
 
 ## 4. Monorepo / Multi-Package Archetype
