@@ -51,7 +51,7 @@ Unlike generic boilerplate scripts or AI generators that produce emoji vomit and
 - **Archetype Awareness**: Automatically selects the optimal documentation structure based on the project's interface:
   - **CLI Utility**: Flags, shell pipelines, subcommands, config files.
   - **Library / SDK**: API surface, typed import snippets, runtime matrices.
-  - **Web / Backend Service**: Docker, environment variables (`.env.example`), migrations, endpoints.
+  - **Web / Backend Service**: Docker, environment variables (`.env.example`), migrations, endpoints, and conditional Bruno/Postman API collections with test assertions.
   - **Monorepo**: Workspace mappings, topological build commands.
   - **Machine Learning / AI**: Model cards, dataset manifests with SHA-256 checksums, VRAM requirements, W&B configs.
   - **Hardware & Embedded**: Microcontroller pinouts, Flash and SRAM memory maps, toolchains, schematics, flashing.
@@ -220,6 +220,7 @@ The agent inspects your project manifests (`package.json`, `Cargo.toml`, `pyproj
 - `CONTRIBUTING.md` with Conventional Commits and PR criteria
 - Standard `LICENSE` (MIT)
 - `ROADMAP.md` grounded in your actual milestones
+- Conditional `bruno/` or `postman/` API collections with sanitized environment variables and executable response assertions when backend/API routes are detected
 
 ### Scenario 2: Auditing Existing Repository Documentation
 

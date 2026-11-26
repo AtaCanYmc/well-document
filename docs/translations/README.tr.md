@@ -53,7 +53,7 @@ Emoji kirliliği ve pazarlama jargonu üreten geleneksel şablon araçlarının 
 - **Arketip Farkındalığı**: Projenin arabirim türüne göre en uygun dokümantasyon yapısını otomatik belirler:
   - **CLI Aracı**: Bayraklar, kabuk boru hatları, alt komutlar, yapılandırma şemaları.
   - **Kütüphane / SDK**: API yüzeyi, tipli kod blokları, çalışma zamanı matrisleri.
-  - **Web / Arka Plan Servisi**: Docker, ortam değişkenleri (`.env.example`), veritabanı geçişleri, uç noktalar.
+  - **Web / Arka Plan Servisi**: Docker, ortam değişkenleri (`.env.example`), veritabanı geçişleri, uç noktalar ve test koşullu Bruno/Postman API koleksiyonları.
   - **Monorepo**: Çalışma alanı haritaları, topolojik derleme sıraları.
   - **Makine Öğrenimi / AI**: Model kartları, SHA-256 sağlama toplamlı veri kümesi manifestoları, VRAM limitleri, W&B konfigürasyonları.
   - **Gömülü Sistemler / Donanım**: Mikrodenetleyici pinout tabloları, Flash/SRAM bellek haritaları, araç zincirleri, şematikler, flash komutları.
@@ -222,6 +222,7 @@ Ajan proje bildirimlerinizi (`package.json`, `Cargo.toml`, `pyproject.toml`, vb.
 - Conventional Commits standartlarında `CONTRIBUTING.md`
 - Standart açık kaynak lisansı (`LICENSE`)
 - Gerçek hedeflere dayalı `ROADMAP.md`
+- Backend/API rotaları tespit edildiğinde onaylı `bruno/` veya `postman/` koleksiyonları ve çalıştırılabilir yanıt test koşulları
 
 ### Senaryo 2: Mevcut Depo Dokümantasyonunu Denetleme
 

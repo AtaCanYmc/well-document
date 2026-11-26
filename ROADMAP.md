@@ -42,3 +42,4 @@ This roadmap outlines the planned development phases, feature releases, and arch
 - [x] Hardware & Embedded Systems archetype (schematics, pinouts, memory maps).
 - [x] Interactive terminal preview mode for local inspection before emission.
 - [x] Multi-lingual documentation synchronizer (strictly audited against machine translation slop).
+- [x] Conditional Bruno and Postman API collection scaffolding with executable response assertions for backend/API repositories.
