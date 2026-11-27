@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/AtaCanYmc/well-document/compare/v1.5.0...v1.6.0) (2026-11-27)
+
+
+### Features
+
+* **skill:** add release-please manifest config and repo-wide version sync rules ([2be3557](https://github.com/AtaCanYmc/well-document/commit/2be3557806bace7c1e4ce3f2b5a122624bc9545d))
+
 ## [1.5.0](https://github.com/AtaCanYmc/well-document/compare/v1.4.1...v1.5.0) (2026-11-26)
 
 
