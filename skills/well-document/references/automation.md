@@ -151,7 +151,9 @@ updates:
 
 ## 3. Automated Changelogs & Releases: Release Please
 
-Include `.github/workflows/release-please.yml` whenever Conventional Commits are used for versioned releases.
+Include `.github/workflows/release-please.yml`, `release-please-config.json`, and `.release-please-manifest.json` whenever Conventional Commits are used for versioned releases. Using manifest mode prevents version drift by synchronizing every version-bearing file across the repository on each release PR.
+
+### Workflow (`.github/workflows/release-please.yml`)
 
 ```yaml
 name: Release Please
@@ -172,8 +174,59 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          release-type: simple
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
 ```
+
+### Configuration (`release-please-config.json`)
+
+Scan the repository for every manifest or metadata file containing a version field (`package.json`, `pyproject.toml`, `Cargo.toml`, `plugin.json`, `SKILL.md`, etc.) and register them under `extra-files` so a single release PR bumps all of them together:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "package.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "generic",
+          "path": "skills/well-document/SKILL.md"
+        }
+      ]
+    }
+  }
+}
+```
+
+### Manifest (`.release-please-manifest.json`)
+
+Initialize `.release-please-manifest.json` with the latest Git release tag (without the leading `v`):
+
+```json
+{
+  ".": "1.0.0"
+}
+```
+
+### Repo-Wide Version Sync Rules
+
+1. **Zero Hardcoded Drift**: For non-JSON/TOML files tracked with `"type": "generic"` (such as `SKILL.md`, `README.md` version badges, or shell constants), place an inline `# x-release-please-version` marker on the version line so Release Please updates it automatically.
+2. **Tag Alignment**: Before scaffolding `.release-please-manifest.json`, check `git tag --sort=-v:refname | head -n 1` and seed the manifest with the actual latest tag.
+3. **Matching `release-type`**: Set `release-type` to match the primary ecosystem (`node`, `python`, `rust`, `go`, or `simple`) and keep secondary manifests in `extra-files`.
 
 ---
 
