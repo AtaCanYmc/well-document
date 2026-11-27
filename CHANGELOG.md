@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/AtaCanYmc/well-document/compare/v1.6.0...v1.7.0) (2026-11-27)
+
+
+### Features
+
+* **skill:** add Dependabot auto-merge workflow template ([2fc476c](https://github.com/AtaCanYmc/well-document/commit/2fc476c23ff20b225947ea4341aefc4ecb4eb95e))
+
 ## [1.6.0](https://github.com/AtaCanYmc/well-document/compare/v1.5.0...v1.6.0) (2026-11-27)
 
 
