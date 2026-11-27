@@ -118,7 +118,7 @@ Standard candidate assets:
 - **`.markdownlint.json` & `.editorconfig`**: Disciplined Markdown linting and universal IDE formatting rules.
 - **`.github/CODEOWNERS`, `ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE/`**: Structured issue forms, PR templates, and review ownership.
 - **API Collections (`bruno/` or `postman/`)** *(Conditional)*: When backend or HTTP API endpoints exist, ask whether to scaffold a Bruno (`.bru`) or Postman (`*.postman_collection.json`) collection with sanitized environment variables (`{{baseUrl}}`, `{{apiKey}}`) and executable response assertions (status codes, required fields, error cases). See [`references/archetypes.md`](references/archetypes.md).
-- **Automation Workflows**: Conditional `ci.yml`, `well-document-gate.yml`, `dependabot.yml`, `release-please.yml` (with `release-please-config.json` and `.release-please-manifest.json` for repo-wide version sync), `owner-auto-merge.yml`, and `.pre-commit-hooks.yaml`.
+- **Automation Workflows**: Conditional `ci.yml`, `well-document-gate.yml`, `dependabot.yml`, `dependabot-auto-merge.yml`, `release-please.yml` (with `release-please-config.json` and `.release-please-manifest.json` for repo-wide version sync), `owner-auto-merge.yml`, and `.pre-commit-hooks.yaml`.
 
 ### Step 3: Auxiliary Command Routes (`preview`, `i18n`, `recipes`)
 

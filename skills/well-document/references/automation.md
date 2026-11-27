@@ -623,6 +623,52 @@ jobs:
 
 ---
 
+## 13. Dependabot Auto-Merge (`.github/workflows/dependabot-auto-merge.yml`)
+
+When `.github/dependabot.yml` is present, manually approving and merging routine `patch` and `minor` dependency updates creates unnecessary maintenance toil.
+
+Scaffold `.github/workflows/dependabot-auto-merge.yml` to automatically approve and queue `patch` and `minor` Dependabot PRs for squash-merging once all required CI checks pass:
+
+```yaml
+name: Dependabot Auto-Merge
+
+on:
+  pull_request_target:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Approve and enable auto-merge for minor and patch updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+```
+
+### Technical Rules & Guardrails
+- **Semver Guard**: Only `semver-minor` and `semver-patch` updates are auto-approved and queued. `semver-major` updates still require manual review to catch breaking changes.
+- **Strict Identity Enforcement**: `github.event.pull_request.user.login == 'dependabot[bot]'` ensures only authentic Dependabot PRs trigger the workflow.
+- **Status Checks Preserved**: `gh pr merge --auto --squash` waits for all required CI status checks and branch protection rules before merging.
+- **Repository Setting Prerequisite**: Requires **Allow auto-merge** and **Allow GitHub Actions to create and approve pull requests** in repository settings.
+
+---
+
 ## 13. Reusable Governance Gate (`.github/workflows/well-document-gate.yml`)
 
 Repositories adopting `well-document` can centralize anti-slop verification into a reusable GitHub Actions workflow. This enables downstream repositories to inherit governance checks via a clean caller job.
